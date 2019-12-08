@@ -10,7 +10,7 @@ import java.util.Scanner;
 public final class LoginMenu extends Menu {
     public static LoginMenu loginMenu = new LoginMenu();
 
-    protected void handleCommand(String command, Menu menu, Scanner scanner) {
+    public void handleCommand(String command, Menu menu, Scanner scanner) {
         if (command.equals("create account")) {
             String username = scanner.nextLine();
             ArrayList<Account> accounts = Account.getAccounts();
@@ -23,12 +23,7 @@ public final class LoginMenu extends Menu {
             }
             String password = scanner.nextLine();
             new Account(username, password);
-
         }
-    }
-
-    public void createAccount(String username, String passwo) {
-
     }
 
     public void login(String usrname, String password) {

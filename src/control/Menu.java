@@ -13,5 +13,5 @@ public abstract class Menu {
     protected abstract boolean allowsCommand(String command);
     protected abstract void help();
     protected abstract void showMenu();
-    protected abstract void handleCommand(String string, Menu menu, Scanner scanner);
+    public abstract void handleCommand(String command, Menu menu, Scanner scanner);
 }

@@ -15,7 +15,7 @@ public class Main {
             if (menu instanceof LoginMenu && command.equals("exit")){
                 break;
             } else {
-
+                menu.handleCommand(command, menu, scanner);
             }
         }
     }
