@@ -6,6 +6,7 @@ import java.io.FileNotFoundException;
 import java.util.Scanner;
 
 public abstract class Menu {
+    public static Menu currentMenu = LoginMenu.loginMenu;
     private Menu parentMenu;
     public Account account;
 

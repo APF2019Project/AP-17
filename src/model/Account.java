@@ -2,6 +2,7 @@ package model;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
+import view.LoginMenuViews;
 
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -31,17 +32,35 @@ public class Account implements Serializable {
     private Collection collection;
     private int zombiesKilled = 0;
 
+    public static void deleteAccount (String username , String password) {
+        Account account = Account.getAccountByUsername(username) ;
+        if (account == null){
+            LoginMenuViews.userNotFoundError();
+            return;
+        }
+        if (Account.passwordMatchesAccount(account , password)) {
+            accounts.remove(account) ;
+            idCounter -- ;
+        }
+    }
+
     public boolean passwordMatches(String password) {
         if (this.password.equals(password)) {
             return true;
         }
         return false;
     }
-    public void addToJson(){
+    public boolean passwordMatchesAccount(Account account , String password) {
+        if (account.getPassword() == password ) return true ;
+        else return false ;
+    }
+
+    public void addToJson() {
         Gson json = new Gson();
         String objectToJson = json.toJson(this);
         System.out.println(objectToJson);
     }
+
     public static void saveAccount() throws FileNotFoundException {
 //        Type accountType = new TypeToken<ArrayList<Account>>(){}.getType();
         System.out.println(accounts.size());
@@ -53,6 +72,15 @@ public class Account implements Serializable {
         printWriter.close();
     }
 
+    public static Account getAccountByUsername(String username) {
+        for (Account account :
+                accounts) {
+            if (account.username.equals(username)) {
+                return account;
+            }
+        }
+        return null;
+    }
 
     public static ArrayList<Account> getAccounts() {
         return accounts;
@@ -61,4 +89,7 @@ public class Account implements Serializable {
     public String getUsername() {
         return username;
     }
+    public void setUsername(String username) {this.username = username ;}
+    public String getPassword() {return password ;}
+    public void setPassword(String username) {this.password = password ;}
 }

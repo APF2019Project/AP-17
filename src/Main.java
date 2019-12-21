@@ -8,15 +8,14 @@ public class Main {
     public static void main(String[] args) throws FileNotFoundException {
         Scanner scanner = new Scanner(System.in);
         String command;
-        LoginMenu loginMenu = LoginMenu.loginMenu;
-        Menu menu = loginMenu;
+        Menu currentMenu = Menu.currentMenu;
         while (true){
             command = scanner.nextLine();
             command = command.toLowerCase();
-            if (menu instanceof LoginMenu && command.equals("exit")){
+            if (currentMenu instanceof LoginMenu && command.equals("exit")){
                 break;
             } else {
-                menu.handleCommand(command, menu, scanner);
+                currentMenu.handleCommand(command, currentMenu, scanner);
             }
         }
     }
