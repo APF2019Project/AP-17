@@ -15,21 +15,7 @@ public final class LoginMenu extends Menu {
     public void handleCommand(String command, Menu currentMenu, Scanner scanner) throws FileNotFoundException {
         if (allowsCommand(command)) {
             if (command.equals("create account")) {
-                LoginMenuViews.askForUsername();
-                String username = scanner.nextLine();
-                ArrayList<Account> accounts = Account.getAccounts();
-                for (Account account :
-                        accounts) {
-                    if (account.getUsername().equals(username)) {
-                        LoginMenuViews.accountExistsError();
-                        return;
-                    }
-                }
-                LoginMenuViews.askForPassword();
-                String password = scanner.nextLine();
-                Account newAccount = new Account(username, password);
-//            newAccount.addToJson();
-                Account.saveAccount();
+                Account.createUser(scanner);
             } else if (command.equals("login")){
                 LoginMenuViews.askForUsername();
                 String username = LoginMenuViews.scanUsername(scanner) ;

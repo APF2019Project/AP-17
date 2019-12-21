@@ -2,6 +2,7 @@ package model;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
+import control.LoginMenu;
 import view.LoginMenuViews;
 
 import java.io.FileNotFoundException;
@@ -10,6 +11,7 @@ import java.io.PrintWriter;
 import java.io.Serializable;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class Account implements Serializable {
     private static ArrayList<Account> accounts = new ArrayList<>();
@@ -43,6 +45,24 @@ public class Account implements Serializable {
             idCounter -- ;
         }
     }
+    public static void createUser(Scanner scanner) {
+        LoginMenuViews.askForUsername();
+        String username = LoginMenuViews.scanUsername(scanner) ;
+        for (Account account :
+                accounts) {
+            if (account.getUsername().equals(username)) {
+                LoginMenuViews.accountExistsError();
+                return ;
+            }
+        }
+        LoginMenuViews.askForPassword();
+        String password = LoginMenuViews.scanPassword(scanner) ;
+        Account newAccount = new Account(username, password);
+        accounts.add(newAccount);
+//            newAccount.addToJson();
+        return ;
+    }
+
 
     public boolean passwordMatches(String password) {
         if (this.password.equals(password)) {

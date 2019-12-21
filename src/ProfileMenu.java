@@ -34,11 +34,7 @@ public class ProfileMenu extends Menu {
                 String username = LoginMenuViews.scanUsername(scanner) ;
                 this.account.setUsername(username);
             }else if (command == "Create") {
-                LoginMenuViews.askForUsername();
-                String username = LoginMenuViews.scanUsername(scanner) ;
-                LoginMenuViews.askForPassword();
-                String password = LoginMenuViews.scanUsername(scanner) ;
-                Account account = new Account(username , password) ;
+                Account.createUser(scanner);
             }else if (command == "Show") {
                 ProfileMenuViews.show(this.account);
             }
