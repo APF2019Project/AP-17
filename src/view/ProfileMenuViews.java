@@ -1,3 +1,5 @@
+package view;
+
 import model.Account;
 
 public class ProfileMenuViews {

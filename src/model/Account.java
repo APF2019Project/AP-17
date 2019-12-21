@@ -3,6 +3,7 @@ package model;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import control.LoginMenu;
+import view.AccountViews;
 import view.LoginMenuViews;
 
 import java.io.FileNotFoundException;
@@ -34,15 +35,21 @@ public class Account implements Serializable {
     private Collection collection;
     private int zombiesKilled = 0;
 
-    public static void deleteAccount (String username , String password) {
+    public static void deleteAccount (Scanner scanner) {
+        LoginMenuViews.askForUsername();
+        String username = LoginMenuViews.scanPassword(scanner);
         Account account = Account.getAccountByUsername(username) ;
         if (account == null){
             LoginMenuViews.userNotFoundError();
             return;
         }
+        LoginMenuViews.askForPassword();
+        String password = LoginMenuViews.scanPassword(scanner);
         if (Account.passwordMatchesAccount(account , password)) {
             accounts.remove(account) ;
             idCounter -- ;
+        } else {
+            AccountViews.wrongPassowrdError();
         }
     }
     public static void createUser(Scanner scanner) {
@@ -70,7 +77,7 @@ public class Account implements Serializable {
         }
         return false;
     }
-    public boolean passwordMatchesAccount(Account account , String password) {
+    public static boolean passwordMatchesAccount(Account account , String password) {
         if (account.getPassword() == password ) return true ;
         else return false ;
     }

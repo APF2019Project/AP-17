@@ -1,7 +1,8 @@
-import control.LoginMenu;
-import control.Menu;
+package control;
+
 import model.Account;
 import view.LoginMenuViews;
+import view.ProfileMenuViews;
 
 import java.util.Scanner;
 
@@ -19,23 +20,15 @@ public class ProfileMenu extends Menu {
                     return;
                 }
                 this.account = account ;
-            }else if (command == "Delete") {
-                LoginMenuViews.askForUsername();
-                String username = LoginMenuViews.scanUsername(scanner) ;
-                LoginMenuViews.askForPassword();
-                String password = LoginMenuViews.scanUsername(scanner) ;
-                if (Account.)
-
-
-
-
-            }else if (command == "Rename") {
+            }else if (command.equals("Delete")) {
+                Account.deleteAccount(scanner);
+            }else if (command.equals("Rename")) {
                 LoginMenuViews.askForUsername();
                 String username = LoginMenuViews.scanUsername(scanner) ;
                 this.account.setUsername(username);
-            }else if (command == "Create") {
+            }else if (command.equals("Create")) {
                 Account.createUser(scanner);
-            }else if (command == "Show") {
+            }else if (command.equals("Show")) {
                 ProfileMenuViews.show(this.account);
             }
         }
