@@ -25,8 +25,8 @@ public class ProfileMenu extends Menu {
                 this.account.setUsername(username);
             }else if (command.equals("Create")) {
                 Account.createUser(scanner);
-            }else if (command.equals("Show")) {
-                ProfileMenuViews.show(this.account);
+            }else if (command.equals("show")) {
+                AccountViews.showUsername(this.account);
             } else if (command.equals("help")){
                 System.out.println("profile menu");
             }

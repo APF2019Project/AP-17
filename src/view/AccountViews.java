@@ -1,5 +1,7 @@
 package view;
 
+import model.Account;
+
 import java.util.Scanner;
 
 public class AccountViews {
@@ -32,5 +34,8 @@ public class AccountViews {
     }
     public static void loginSuccesfull(){
         System.out.println("Login successful!");
+    }
+    public static void showUsername(Account account){
+        System.out.println(account.getUsername());
     }
 }
