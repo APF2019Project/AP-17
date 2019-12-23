@@ -1,6 +1,7 @@
 package control;
 
 import model.Account;
+import view.AccountViews;
 import view.LoginMenuViews;
 import view.ProfileMenuViews;
 
@@ -9,27 +10,25 @@ import java.util.Scanner;
 public class ProfileMenu extends Menu {
     public static ProfileMenu profileMenu = new ProfileMenu();
 
-    public void handleCommand(String command , Menu CurrentMenu , Scanner scanner) {
+    public void handleCommand(String command, Scanner scanner) {
         if (allowsCommand(command)) {
             if (command == "Change") {
-                LoginMenuViews.askForUsername();
-                String username = LoginMenuViews.scanUsername(scanner);
-                Account account = Account.getAccountByUsername(username);
-                if (account == null){
-                    LoginMenuViews.userNotFoundError();
-                    return;
+                Account currentAccount = Account.login(scanner);
+                if (currentAccount != null){
+                    this.account = currentAccount;
                 }
-                this.account = account ;
             }else if (command.equals("Delete")) {
                 Account.deleteAccount(scanner);
             }else if (command.equals("Rename")) {
-                LoginMenuViews.askForUsername();
-                String username = LoginMenuViews.scanUsername(scanner) ;
+                AccountViews.askForUsername();
+                String username = AccountViews.scanUsername(scanner) ;
                 this.account.setUsername(username);
             }else if (command.equals("Create")) {
                 Account.createUser(scanner);
             }else if (command.equals("Show")) {
                 ProfileMenuViews.show(this.account);
+            } else if (command.equals("help")){
+                System.out.println("profile menu");
             }
         }
     }

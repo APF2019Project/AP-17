@@ -11,9 +11,14 @@ public abstract class Menu {
     public Account account;
 
     protected abstract void exit();
+
     protected abstract void enterMenu(String menu);
+
     protected abstract boolean allowsCommand(String command);
+
     protected abstract void help();
+
     protected abstract void showMenu();
-    public abstract void handleCommand(String command, Menu menu, Scanner scanner) throws FileNotFoundException;
+
+    public abstract void handleCommand(String command, Scanner scanner) throws FileNotFoundException;
 }

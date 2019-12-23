@@ -3,6 +3,7 @@ package model;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import control.LoginMenu;
+import control.MainMenu;
 import view.AccountViews;
 import view.LoginMenuViews;
 
@@ -36,15 +37,15 @@ public class Account implements Serializable {
     private int zombiesKilled = 0;
 
     public static void deleteAccount (Scanner scanner) {
-        LoginMenuViews.askForUsername();
-        String username = LoginMenuViews.scanPassword(scanner);
+        AccountViews.askForUsername();
+        String username = AccountViews.scanPassword(scanner);
         Account account = Account.getAccountByUsername(username) ;
         if (account == null){
-            LoginMenuViews.userNotFoundError();
+            AccountViews.userNotFoundError();
             return;
         }
-        LoginMenuViews.askForPassword();
-        String password = LoginMenuViews.scanPassword(scanner);
+        AccountViews.askForPassword();
+        String password = AccountViews.scanPassword(scanner);
         if (Account.passwordMatchesAccount(account , password)) {
             accounts.remove(account) ;
             idCounter -- ;
@@ -53,21 +54,38 @@ public class Account implements Serializable {
         }
     }
     public static void createUser(Scanner scanner) {
-        LoginMenuViews.askForUsername();
-        String username = LoginMenuViews.scanUsername(scanner) ;
+        AccountViews.askForUsername();
+        String username = AccountViews.scanUsername(scanner) ;
         for (Account account :
                 accounts) {
             if (account.getUsername().equals(username)) {
-                LoginMenuViews.accountExistsError();
+                AccountViews.accountExistsError();
                 return ;
             }
         }
-        LoginMenuViews.askForPassword();
-        String password = LoginMenuViews.scanPassword(scanner) ;
+        AccountViews.askForPassword();
+        String password = AccountViews.scanPassword(scanner) ;
         Account newAccount = new Account(username, password);
-        accounts.add(newAccount);
+        accounts.add(newAccount);;
 //            newAccount.addToJson();
-        return ;
+        AccountViews.accountCreateSuccesfully();
+    }
+    public static Account login(Scanner scanner){
+        AccountViews.askForUsername();
+        String username = AccountViews.scanUsername(scanner) ;
+        Account account = Account.getAccountByUsername(username);
+        if (account == null){
+            AccountViews.userNotFoundError();
+            return null;
+        }
+        AccountViews.askForPassword();
+        String password = AccountViews.scanPassword(scanner) ;
+        if (!account.passwordMatches(password)){
+            AccountViews.wrongPasswordError();
+            return null;
+        }
+        AccountViews.loginSuccesfull();
+        return account;
     }
 
 
@@ -108,6 +126,7 @@ public class Account implements Serializable {
         }
         return null;
     }
+
 
     public static ArrayList<Account> getAccounts() {
         return accounts;
