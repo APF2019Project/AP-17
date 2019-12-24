@@ -18,7 +18,7 @@ public class Battle extends Menu {
 
     }
     public boolean allowsCommand(String command){
-
+        return true;
     }
     public void help(){
 
