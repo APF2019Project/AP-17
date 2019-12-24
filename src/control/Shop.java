@@ -1,6 +1,7 @@
 package control;
 
 import model.Card;
+import view.AccountViews;
 import view.CardView;
 
 import java.util.ArrayList;
@@ -17,6 +18,14 @@ public class Shop extends Menu {
                     CardView.showNameAndPrice(card);
                 }
             }
+        }
+        else if (command.equals("money")) {
+            AccountViews.showMoney(this.account);
+        }
+        else if (command.matches("buy \\w+")) {
+            String[] commandSplit = command.split(" ") ;
+            String name = commandSplit[1] ;
+
         }
     }
     public void exit(){
