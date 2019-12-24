@@ -5,12 +5,13 @@ import view.AccountViews;
 import view.LoginMenuViews;
 import view.ProfileMenuViews;
 
+import java.io.IOException;
 import java.util.Scanner;
 
 public class ProfileMenu extends Menu {
     public static ProfileMenu profileMenu = new ProfileMenu();
 
-    public void handleCommand(String command, Scanner scanner) {
+    public void handleCommand(String command, Scanner scanner) throws IOException {
         if (allowsCommand(command)) {
             if (command == "Change") {
                 Account currentAccount = Account.login(scanner);

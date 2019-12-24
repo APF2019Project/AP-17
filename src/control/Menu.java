@@ -3,6 +3,7 @@ package control;
 import model.Account;
 
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.Scanner;
 
 public abstract class Menu {
@@ -20,5 +21,5 @@ public abstract class Menu {
 
     protected abstract void showMenu();
 
-    public abstract void handleCommand(String command, Scanner scanner) throws FileNotFoundException;
+    public abstract void handleCommand(String command, Scanner scanner) throws IOException;
 }

@@ -1,11 +1,11 @@
 package control;
 
-import com.google.gson.Gson;
 import model.Account;
 import view.AccountViews;
 import view.LoginMenuViews;
 
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -13,7 +13,7 @@ import java.util.Scanner;
 public final class LoginMenu extends Menu {
     public static LoginMenu loginMenu = new LoginMenu();
 
-    public void handleCommand(String command, Scanner scanner) throws FileNotFoundException {
+    public void handleCommand(String command, Scanner scanner) throws IOException {
         if (allowsCommand(command)) {
             if (command.equals("create account")) {
                 Account.createUser(scanner);
