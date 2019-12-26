@@ -10,12 +10,10 @@ public abstract class Card {
     private Cell location;
     private int price;
     private int health;
-    private int cooldown;
 
     public Card(String name, int price, int cooldown) {
         this.name = name;
         this.price = price;
-        this.cooldown = cooldown;
     }
 
     public int getPrice() {
