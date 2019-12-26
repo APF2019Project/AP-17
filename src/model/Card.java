@@ -6,13 +6,14 @@ import java.util.ArrayList;
 
 public abstract class Card {
     private static ArrayList<Card> cards = new ArrayList<>();
-    private String name;
+    private final String name;
     private Cell location;
-    private int price;
-    private int health;
+    private final int price;
+    private final int health;
 
-    public Card(String name, int price, int cooldown) {
+    public Card(String name, int health, int price) {
         this.name = name;
+        this.health = health;
         this.price = price;
     }
 
