@@ -5,6 +5,7 @@ import model.Account;
 import java.util.Scanner;
 
 public class AccountViews {
+    public static void showMoney(Account account){System.out.println(account.getShopCoins());}
     public static void wrongPassowrdError(){
         System.out.println("Error: Wrong Password");
     }

@@ -10,4 +10,7 @@ public class Collection {
     public ArrayList<Card> getCards() {
         return cards;
     }
+    public boolean hasCard(String name) {
+        return true ;
+    }
 }

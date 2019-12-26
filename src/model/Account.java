@@ -119,6 +119,14 @@ public class Account implements Serializable {
         return null;
     }
 
+    public int getShopCoins() {
+        return shopCoins;
+    }
+
+    public Collection getCollection () {
+        return collection ;
+    }
+
 
     public static ArrayList<Account> getAccounts() {
         return accounts;

@@ -12,9 +12,17 @@ public abstract class Card {
     private int health;
     private int cooldown;
 
-    public Card(String name, int price, int cooldown){
+    public Card(String name, int price, int cooldown) {
         this.name = name;
         this.price = price;
         this.cooldown = cooldown;
+    }
+
+    public int getPrice() {
+        return price;
+    }
+
+    public String getName() {
+        return name;
     }
 }
