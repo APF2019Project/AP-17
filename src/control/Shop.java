@@ -8,7 +8,6 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Shop extends Menu {
-
     private static ArrayList<Card> cards = new ArrayList<Card>() ;
 
     public void handleCommand(String command, Scanner scanner){

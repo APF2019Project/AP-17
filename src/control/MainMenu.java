@@ -9,8 +9,9 @@ public class MainMenu extends Menu {
         if (allowsCommand(command)) {
             if (command.equals("profile")) {
                 currentMenu = ProfileMenu.profileMenu;
-            }
-            else if (command.equals("help")) {
+            } else if (command.equals("play")) {
+                currentMenu = PlayMenu.playMenu;
+            } else if (command.equals("help")) {
                 help();
             }
         }
