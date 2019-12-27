@@ -2,8 +2,6 @@ package control;
 
 import model.Account;
 import view.AccountViews;
-import view.LoginMenuViews;
-import view.ProfileMenuViews;
 
 import java.io.IOException;
 import java.util.Scanner;

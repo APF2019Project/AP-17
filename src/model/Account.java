@@ -1,13 +1,9 @@
 package model;
 
 import com.gilecode.yagson.YaGson;
-import control.LoginMenu;
-import control.MainMenu;
 import view.AccountViews;
-import view.LoginMenuViews;
 
 import java.io.*;
-import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.Scanner;
