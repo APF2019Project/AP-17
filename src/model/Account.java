@@ -23,6 +23,7 @@ public class Account implements Serializable {
     private int shopCoins = 0;
     private Collection collection;
     private int zombiesKilled = 0;
+    private Player player;
 
     public static void deleteAccount(Scanner scanner) throws IOException {
         AccountViews.askForUsername();
@@ -89,6 +90,10 @@ public class Account implements Serializable {
     public static boolean passwordMatchesAccount(Account account, String password) {
         if (account.getPassword() == password) return true;
         else return false;
+    }
+
+    public  void createPlayer(){
+        player = new Player(this, 2, t)
     }
 
     public static void saveAccounts() throws IOException {
