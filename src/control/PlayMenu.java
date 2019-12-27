@@ -1,12 +1,8 @@
 package control;
 
 import control.GameModes.Day;
-import model.Player;
 
 import java.io.IOException;
-import java.security.PrivateKey;
-import java.security.PublicKey;
-import java.util.PrimitiveIterator;
 import java.util.Scanner;
 
 public class PlayMenu extends Menu {
@@ -14,8 +10,8 @@ public class PlayMenu extends Menu {
     @Override
     public void handleCommand(String command, Scanner scanner) throws IOException {
         if (command.equals("day")){
-            currentMenu = CollectionMenu.collectionMenu;
-            CollectionMenu.menu = Day.day;
+            currentMenu = PlantsCollectionMenu.plantsCollectionMenu;
+            PlantsCollectionMenu.menu = Day.day;
             currentMenu.account = currentMenu.parentMenu.account;
             currentMenu.account.createDayAndWaterPlayer();
         }
