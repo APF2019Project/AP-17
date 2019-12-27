@@ -24,7 +24,17 @@ public class Shop extends Menu {
         else if (command.matches("buy \\w+")) {
             String[] commandSplit = command.split(" ") ;
             String name = commandSplit[1] ;
-
+            if (checkCard(name) != null) {
+                Card card = checkCard(name) ;
+                if(this.account.getShopCoins() >= card.getPrice()) {
+                    this.account.getCollection().getCards().add(card);
+                }
+            }
+        }
+        else if (command.equals("show collection")) {
+            for(Card card : this.account.getCollection().getCards()) {
+                CardView.showName(card);
+            }
         }
     }
     public void exit(){
@@ -42,6 +52,14 @@ public class Shop extends Menu {
     public void help(){
 
     }
+
+    public Card checkCard (String name) {
+        for (Card card : cards) {
+            if (card.getName().equals(name)) return card ;
+        }
+        return null ;
+    }
+
 
 
 }

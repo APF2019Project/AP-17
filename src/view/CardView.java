@@ -7,4 +7,7 @@ public class CardView {
     public static void showNameAndPrice(Card card){
         System.out.println(card.getName() + " " + card.getPrice());
     }
+    public static void showName(Card card){
+        System.out.println(card.getName());
+    }
 }
