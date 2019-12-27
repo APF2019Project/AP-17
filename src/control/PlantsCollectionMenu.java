@@ -3,6 +3,7 @@ package control;
 import model.Card;
 import model.Collection;
 import model.Hand;
+import model.Plant;
 import view.CardView;
 import view.HandViews;
 
@@ -16,45 +17,46 @@ public class PlantsCollectionMenu extends Menu {
 
     @Override
     public void handleCommand(String command, Scanner scanner) throws IOException {
-        if (command.equals("play")){
+        if (command.equals("play")) {
             currentMenu = menu;
-        } else if (command.equals("show hand")){
+        } else if (command.equals("show hand")) {
             Hand hand = currentMenu.account.getPlayer().getHand();
             ArrayList<Card> cards = hand.getCards();
             for (Card card :
                     cards) {
                 CardView.showName(card);
             }
-        } else if (command.equals("show collection")){
+        } else if (command.equals("show collection")) {
             Hand hand = currentMenu.account.getPlayer().getHand();
-            ArrayList<Card> cards = currentMenu.account.getCollection().getCards();
-            for (Card card :
-                    cards) {
-                if (!hand.hasCard(card)) {
-                    CardView.showName(card);
+            ArrayList<Plant> plants = currentMenu.account.getCollection().getPlants();
+            for (Plant plant :
+                    plants) {
+                if (!hand.hasCard(plant)) {
+                    CardView.showName(plant);
                 }
-                }
-        } else if (command.matches("select \\d+")){
+            }
+        } else if (command.matches("select \\d+")) {
             Collection collection = currentMenu.account.getCollection();
             String[] commandSplit = command.split(" ");
             String name = commandSplit[1];
-            Card card = collection.getCardByName(name);
-            if (card == null){
+            Plant plant = collection.getPlantByName(name);
+            if (plant == null) {
                 CardView.cardDoesntExistsError();
                 return;
             }
             Hand hand = account.getPlayer().getHand();
-            if (hand.hasCard(card)){
+            if (hand.hasCard(plant)) {
                 HandViews.hasCardInYourHandError();
                 return;
             }
+            Plant newPlant = (Plant) plant.clone();
             ArrayList<Card> cards = hand.getCards();
-            cards.add(card);
-        } else if (command.matches("remove \\d+")){
+            cards.add(newPlant);
+        } else if (command.matches("remove \\d+")) {
             String[] commandSplit = command.split(" ");
             String name = commandSplit[1];
             Hand hand = account.getPlayer().getHand();
-            if (!hand.hasCard(name)){
+            if (!hand.hasCard(name)) {
                 HandViews.dontHaveCardInYourHandError();
                 return;
             }
@@ -63,12 +65,13 @@ public class PlantsCollectionMenu extends Menu {
             cards.remove(card);
         }
     }
+
     @Override
     protected boolean allowsCommand(String command) {
         return false;
     }
 
-    private PlantsCollectionMenu(){
+    private PlantsCollectionMenu() {
         super(PlayMenu.playMenu);
     }
 }

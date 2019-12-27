@@ -15,4 +15,27 @@ public class Plant extends Card{
         this.sunsNeeded = sunsNeeded;
         this.shotDelay = shotDelay;
     }
+
+    @Override
+    public Object clone(){
+        try {
+            return super.clone();
+        } catch (CloneNotSupportedException e){
+            return  new Plant(this.getName(), this.getHealth(), this.getCooldown(), this.sunsNeeded, this.shotDelay);
+        }
+    }
+
+    public int getCooldown() {
+        return cooldown;
+    }
+
+    @Override
+    public int getPrice() {
+        return super.getPrice();
+    }
+
+    @Override
+    public String getName() {
+        return super.getName();
+    }
 }

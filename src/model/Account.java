@@ -15,8 +15,7 @@ public class Account implements Serializable {
         this.username = username;
         this.password = password;
     }
-
-    //    private final String name;
+    
     private String username;
     private String password;
     private int gameCoins = 0;

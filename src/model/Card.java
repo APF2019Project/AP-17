@@ -10,23 +10,17 @@ public abstract class Card {
     private final String name;
     private Cell location;
     private final int price;
-    private final int health;
+    private final int maxHealth;
+    private int health;
 
-    public Card(String name, int health, int price) {
+    public Card(String name, int maxHealth, int price) {
         this.name = name;
-        this.health = health;
+        this.maxHealth = maxHealth;
+        this.health = maxHealth;
         this.price = price;
     }
 
-    @Override
-    public  Object clone(){
-        Card card = null;
-        try {
-            card = (Card) super.clone();
-        } catch (CloneNotSupportedException e){
-            card = new Card (this.name, this.health, this.price);
-        }
-    }
+
 
     public int getPrice() {
         return price;
@@ -34,5 +28,9 @@ public abstract class Card {
 
     public String getName() {
         return name;
+    }
+
+    public int getHealth() {
+        return health;
     }
 }
