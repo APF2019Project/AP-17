@@ -1,6 +1,7 @@
 package control.GameModes;
 
 import control.Menu;
+import control.ShowGameResultMenu;
 
 public abstract class GameModes extends Menu {
     void generateMap(){
@@ -15,4 +16,7 @@ public abstract class GameModes extends Menu {
     void getHand(){
 
     };
+    protected GameModes(){
+        super(ShowGameResultMenu.showGameResultMenu);
+    }
 }

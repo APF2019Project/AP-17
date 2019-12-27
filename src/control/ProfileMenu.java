@@ -52,6 +52,6 @@ public class ProfileMenu extends Menu {
     }
 
     private ProfileMenu() {
-
+        super(MainMenu.mainMenu);
     }
 }

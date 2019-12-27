@@ -2,6 +2,7 @@ package model;
 
 
 import control.Menu;
+import control.PlayMenu;
 import view.CardView;
 
 import java.util.ArrayList;
@@ -49,7 +50,7 @@ public class Collection {
             }
         }
         else if (command.equals("play")) {
-            Menu.currentMenu = playMenu ;
+            Menu.currentMenu = PlayMenu.playMenu;
         }
     }
 }

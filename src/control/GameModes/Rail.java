@@ -6,29 +6,11 @@ import java.io.IOException;
 import java.util.Scanner;
 
 public class Rail extends GameModes {
-    @Override
-    protected void exit() {
 
-    }
-
-    @Override
-    protected void enterMenu(String menu) {
-
-    }
 
     @Override
     protected boolean allowsCommand(String command) {
         return false;
-    }
-
-    @Override
-    protected void help() {
-
-    }
-
-    @Override
-    protected void showMenu() {
-
     }
 
     @Override

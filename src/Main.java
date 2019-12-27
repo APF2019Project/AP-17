@@ -14,13 +14,14 @@ public class Main {
     public static void main(String[] args) throws IOException {
         Scanner scanner = new Scanner(System.in);
         String command;
+
 //        FileWriter fileWriter = new FileWriter("../model/zombies.json");
         YaGson yaGson = new YaGson();
         ArrayList<Zombie> zombies = new ArrayList<>();
         while (true){
             command = scanner.nextLine();
             command = command.toLowerCase();
-            if (Menu.currentMenu instanceof LoginMenu && command.equals("exit")){
+            if (Menu.currentMenu == null){
                 break;
             } else {
                 Menu.currentMenu.handleCommand(command, scanner);

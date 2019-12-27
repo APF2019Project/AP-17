@@ -15,30 +15,12 @@ public class CollectionMenu extends Menu {
 
         }
     }
-
-    @Override
-    protected void exit() {
-
-    }
-
-    @Override
-    protected void enterMenu(String menu) {
-
-    }
-
     @Override
     protected boolean allowsCommand(String command) {
         return false;
     }
 
-    @Override
-    protected void help() {
-
+    private CollectionMenu(){
+        super(PlayMenu.playMenu);
     }
-
-    @Override
-    protected void showMenu() {
-
-    }
-
 }
