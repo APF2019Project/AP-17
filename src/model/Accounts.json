@@ -1,1 +1,1 @@
-{"@type":"model.Account","@val":{"username":"arman","password":"fisjefiojef","id":0,"gameCoins":0,"shopCoins":0,"zombiesKilled":0}}
+{"@type":"model.Account","@val":{"username":"arman","password":"arman","id":0,"gameCoins":0,"shopCoins":0,"zombiesKilled":0}}
