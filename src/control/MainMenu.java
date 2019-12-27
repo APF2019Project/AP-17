@@ -11,10 +11,13 @@ public class MainMenu extends Menu {
         if (allowsCommand(command)) {
             if (command.equals("profile")) {
                 currentMenu = ProfileMenu.profileMenu;
+                currentMenu.account = currentMenu.parentMenu.account;
             } else if (command.equals("play")) {
                 currentMenu = PlayMenu.playMenu;
+                currentMenu.account = currentMenu.parentMenu.account;
             }else if (command.equals("shop")){
                 currentMenu = Shop.shop;
+                currentMenu.account = currentMenu.parentMenu.account;
             }
             else if (command.equals("help")) {
                 MenuViews.mainMenuHelp();

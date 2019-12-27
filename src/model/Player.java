@@ -1,12 +1,15 @@
 package model;
 
-public class Player {
+public abstract class Player {
     private Account account;
     private int suns;
     private Hand hand;
-    public Player(Account account, int suns){
+
+    public Hand getHand(){
+        return hand;
+    }
+    public Player(Account account){
         this.account = account;
-        this.suns = suns;
         hand = new Hand();
     }
 }

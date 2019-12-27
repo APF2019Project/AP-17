@@ -16,6 +16,8 @@ public class PlayMenu extends Menu {
         if (command.equals("day")){
             currentMenu = CollectionMenu.collectionMenu;
             CollectionMenu.menu = Day.day;
+            currentMenu.account = currentMenu.parentMenu.account;
+            currentMenu.account.createDayAndWaterPlayer();
         }
     }
 

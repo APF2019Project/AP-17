@@ -92,8 +92,12 @@ public class Account implements Serializable {
         else return false;
     }
 
-    public  void createPlayer(){
-        player = new Player(this, 2, t)
+    public  void createDayAndWaterPlayer(){
+        player = new DayAndWaterPlayer(this, 2);
+    }
+
+    public Player getPlayer() {
+        return player;
     }
 
     public static void saveAccounts() throws IOException {

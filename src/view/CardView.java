@@ -18,4 +18,7 @@ public class CardView {
         }
         return null ;
     }
+    public static void cardDoesntExistsError(){
+        System.out.println("Error: card doesn't exists!");
+    }
 }

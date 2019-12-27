@@ -1,6 +1,7 @@
 package model;
 
 
+import control.Accessories.Car;
 import control.Menu;
 import control.PlayMenu;
 import view.CardView;
@@ -52,5 +53,14 @@ public class Collection {
         else if (command.equals("play")) {
             Menu.currentMenu = PlayMenu.playMenu;
         }
+    }
+    public Card getCardByName(String name){
+        for (Card card :
+                cards) {
+            if (card.getName().equals(name)) {
+                return card;
+            }
+        }
+        return null;
     }
 }
