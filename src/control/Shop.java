@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Shop extends Menu {
+    public static Shop shop = new Shop();
     private static ArrayList<Card> cards = new ArrayList<Card>() ;
 
     public void handleCommand(String command, Scanner scanner){
@@ -60,6 +61,8 @@ public class Shop extends Menu {
         return null ;
     }
 
-
+    private Shop(){
+        super(MainMenu.mainMenu);
+    }
 
 }

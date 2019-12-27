@@ -11,32 +11,28 @@ public class MainMenu extends Menu {
                 currentMenu = ProfileMenu.profileMenu;
             } else if (command.equals("play")) {
                 currentMenu = PlayMenu.playMenu;
-            } else if (command.equals("help")) {
-                help();
+            }else if (command.equals("shop")){
+                currentMenu = Shop.shop;
             }
+            else if (command.equals("help")) {
+            } else if (command.equals("exit")){
+
+            }
+        } else {
+
         }
     }
 
-    public void exit() {
-    }
-
-    public void enterMenu(String string) {
-
-    }
-
-    public boolean allowsCommand(String string) {
-        return true;
-    }
-
-    public void help() {
-        System.out.println("main menu");
-    }
-
-    public void showMenu() {
-        System.out.println("");
+    public boolean allowsCommand(String command) {
+        if (command.equals("profile") || command.equals("play")
+        || command.equals("shop") || command.equals("help")
+        || command.equals("exit")){
+            return true;
+        }
+        return false;
     }
 
     private MainMenu() {
-
+        super(LoginMenu.loginMenu);
     }
 }
