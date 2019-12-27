@@ -2,6 +2,7 @@ package view;
 
 import model.Account;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class AccountViews {
@@ -38,5 +39,12 @@ public class AccountViews {
     }
     public static void showUsername(Account account){
         System.out.println(account.getUsername());
+    }
+    public static void showLeaderBoard(){
+        ArrayList<Account> accounts = Account.getAccounts();
+        for (int i = accounts.size() - 1; i >= 0; i--) {
+            Account account = accounts.get(i);
+            System.out.println(account.getUsername());
+        }
     }
 }

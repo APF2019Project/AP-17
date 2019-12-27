@@ -25,7 +25,11 @@ public final class LoginMenu extends Menu {
                 }
             } else if (command.equals("help")){
                 System.out.println("login menu");
+            } else if (command.equals("leaderboard")){
+                AccountViews.showLeaderBoard();
             }
+        } else {
+
         }
     }
 

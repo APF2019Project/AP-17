@@ -9,23 +9,20 @@ import view.LoginMenuViews;
 import java.io.*;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.Scanner;
 
 public class Account implements Serializable {
     private static ArrayList<Account> accounts = new ArrayList<>();
-    private static int idCounter = 0;
 
     public Account(String username, String password) {
         this.username = username;
         this.password = password;
-        this.id = idCounter;
-        idCounter++;
     }
 
     //    private final String name;
     private String username;
     private String password;
-    private int id;
     private int gameCoins = 0;
     private int shopCoins = 0;
     private Collection collection;
@@ -43,7 +40,6 @@ public class Account implements Serializable {
         String password = AccountViews.scanPassword(scanner);
         if (Account.passwordMatchesAccount(account, password)) {
             accounts.remove(account);
-            idCounter--;
         } else {
             AccountViews.wrongPassowrdError();
         }
@@ -129,6 +125,7 @@ public class Account implements Serializable {
 
 
     public static ArrayList<Account> getAccounts() {
+        sortAccountsByZombiesKilled();
         return accounts;
     }
 
@@ -144,7 +141,15 @@ public class Account implements Serializable {
         return password;
     }
 
+    public int getZombiesKilled(){
+        return zombiesKilled;
+    }
+
     public void setPassword(String username) {
         this.password = password;
+    }
+
+    private static void sortAccountsByZombiesKilled(){
+        accounts.sort(Comparator.comparing(Account::getZombiesKilled));
     }
 }
