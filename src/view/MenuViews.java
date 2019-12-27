@@ -47,4 +47,17 @@ public class MenuViews {
         System.out.println("create --> create a new account");
         System.out.println("show --> shows the username of current user");
     }
+
+    public static void collectionMenuAllowsCommandError(){
+        System.out.println("Collection menu Error: Please enter a valid command!");
+        System.out.println("For more information, enter help");
+    }
+
+    public static void collectionMenuHelp(){
+        System.out.println("show hand --> shows selected cards");
+        System.out.println("show  collection --> Show unselected cards");
+        System.out.println("select [name] --> Select a card to add it to hand");
+        System.out.println("remove [name] --> Remove a card from your hand");
+        System.out.println("play --> start the game");
+    }
 }

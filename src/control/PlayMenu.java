@@ -11,7 +11,7 @@ public class PlayMenu extends Menu {
     public void handleCommand(String command, Scanner scanner) throws IOException {
         if (command.equals("day")){
             currentMenu = PlantsCollectionMenu.plantsCollectionMenu;
-            PlantsCollectionMenu.menu = Day.day;
+            PlantsCollectionMenu.plantsCollectionMenu.menu = Day.day;
             currentMenu.account = currentMenu.parentMenu.account;
             currentMenu.account.createDayAndWaterPlayer();
         }
