@@ -41,7 +41,7 @@ public final class LoginMenu extends Menu {
         return false;
     }
     private LoginMenu() {
-        this.parentMenu = null;
+        super(null);
     }
 
 }
