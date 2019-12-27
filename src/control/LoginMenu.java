@@ -20,54 +20,28 @@ public final class LoginMenu extends Menu {
                     currentMenu = MainMenu.mainMenu;
                     currentMenu.account = currentAccount;
                 }
+            } else if (command.equals("leaderboard")) {
+                currentMenu = Leaderboard.leaderboard;
             } else if (command.equals("help")) {
                 MenuViews.loginMenuHelp();
-            } else if (command.equals("leaderboard")) {
-                AccountViews.showLeaderBoard();
+            } else if (command.equals("exit")) {
+                currentMenu =  this.parentMenu;
             }
         } else {
             MenuViews.loginMenuAllowsCommandError();
         }
     }
 
-    public void login(String usrname, String password) {
-
-    }
-
-    public void getLeaderboard() {
-
-    }
-
-    protected void exit() {
-
-    }
-
-    protected void enterMenu(String menu) {
-
-    }
-
     protected boolean allowsCommand(String command) {
         if (command.equals("create account") || command.equals("login")
-        || command.equals("leaderboard") || command.equals("help")){
+                || command.equals("leaderboard") || command.equals("help")
+                || command.equals("exit")) {
             return true;
         }
         return false;
     }
-
-    protected void help() {
-
-    }
-
-    protected void showMenu() {
-
-    }
-
-    protected boolean checkPassword(String username, String password) {
-        return true;
-    }
-
     private LoginMenu() {
-
+        this.parentMenu = null;
     }
 
 }
