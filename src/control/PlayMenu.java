@@ -19,25 +19,11 @@ public class PlayMenu extends Menu {
         }
     }
 
-    protected void exit() {
-
-    }
-
-    protected void enterMenu(String menu) {
-
-    }
 
     protected boolean allowsCommand(String command) {
         return true;
     }
 
-    protected void help() {
-
-    }
-
-    protected void showMenu() {
-
-    }
     private PlayMenu(){
         super(MainMenu.mainMenu);
     }

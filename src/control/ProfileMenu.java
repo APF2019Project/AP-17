@@ -2,6 +2,7 @@ package control;
 
 import model.Account;
 import view.AccountViews;
+import view.MenuViews;
 
 import java.io.IOException;
 import java.util.Scanner;
@@ -11,44 +12,33 @@ public class ProfileMenu extends Menu {
 
     public void handleCommand(String command, Scanner scanner) throws IOException {
         if (allowsCommand(command)) {
-            if (command == "Change") {
+            if (command == "change") {
                 Account currentAccount = Account.login(scanner);
-                if (currentAccount != null){
+                if (currentAccount != null) {
                     this.account = currentAccount;
                 }
-            }else if (command.equals("Delete")) {
+            } else if (command.equals("delete")) {
                 Account.deleteAccount(scanner);
-            }else if (command.equals("Rename")) {
+            } else if (command.equals("rename")) {
                 AccountViews.askForUsername();
-                String username = AccountViews.scanUsername(scanner) ;
+                String username = AccountViews.scanUsername(scanner);
                 this.account.setUsername(username);
-            }else if (command.equals("Create")) {
+            } else if (command.equals("create")) {
                 Account.createUser(scanner);
-            }else if (command.equals("show")) {
+            } else if (command.equals("show")) {
                 AccountViews.showUsername(this.account);
-            } else if (command.equals("help")){
-                System.out.println("profile menu");
+            } else if (command.equals("help")) {
+                MenuViews.profileMenuHelp();
+            } else if (command.equals("exit")){
+                currentMenu = this.parentMenu;
             }
+        } else {
+            MenuViews.profileMenuAllowsCommandError();
         }
-    }
-    protected void exit() {
-
-    }
-
-    protected void enterMenu(String menu) {
-
     }
 
     protected boolean allowsCommand(String command) {
         return true;
-    }
-
-    protected void help() {
-
-    }
-
-    protected void showMenu() {
-
     }
 
     private ProfileMenu() {

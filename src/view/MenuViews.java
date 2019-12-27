@@ -34,4 +34,17 @@ public class MenuViews {
         System.out.println("shop --> goes to shop menu");
         System.out.println("exit --> goes to login menu");
     }
+
+    public static void profileMenuAllowsCommandError(){
+        System.out.println("Profile menu Error: Please enter a valid command!");
+        System.out.println("For more information, enter help");
+    }
+
+    public static void profileMenuHelp(){
+        System.out.println("change --> change the logined user");
+        System.out.println("delete --> delete an account");
+        System.out.println("rename --> rename your username");
+        System.out.println("create --> create a new account");
+        System.out.println("show --> shows the username of current user");
+    }
 }

@@ -24,9 +24,9 @@ public class Account implements Serializable {
     private Collection collection;
     private int zombiesKilled = 0;
 
-    public static void deleteAccount(Scanner scanner) {
+    public static void deleteAccount(Scanner scanner) throws IOException {
         AccountViews.askForUsername();
-        String username = AccountViews.scanPassword(scanner);
+        String username = AccountViews.scanUsername(scanner);
         Account account = Account.getAccountByUsername(username);
         if (account == null) {
             AccountViews.userNotFoundError();
@@ -36,6 +36,7 @@ public class Account implements Serializable {
         String password = AccountViews.scanPassword(scanner);
         if (Account.passwordMatchesAccount(account, password)) {
             accounts.remove(account);
+            saveAccounts();
         } else {
             AccountViews.wrongPassowrdError();
         }
