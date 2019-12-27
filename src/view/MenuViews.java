@@ -22,4 +22,16 @@ public class MenuViews {
         System.out.println("show --> shows Learboard by number of zombies killed");
         System.out.println("exit --> goes to Login menu");
     }
+
+    public static void mainMenuAllowsCommandError(){
+        System.out.println("Main menu Error: Please enter a valid command!");
+        System.out.println("For more information, enter help");
+    }
+
+    public static void mainMenuHelp(){
+        System.out.println("play --> goes to Play menu");
+        System.out.println("profile --> goes to profile menu");
+        System.out.println("shop --> goes to shop menu");
+        System.out.println("exit --> goes to login menu");
+    }
 }

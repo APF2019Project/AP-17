@@ -1,5 +1,7 @@
 package control;
 
+import view.MenuViews;
+
 import java.util.Scanner;
 
 public class MainMenu extends Menu {
@@ -15,11 +17,12 @@ public class MainMenu extends Menu {
                 currentMenu = Shop.shop;
             }
             else if (command.equals("help")) {
+                MenuViews.mainMenuHelp();
             } else if (command.equals("exit")){
-
+                currentMenu = LoginMenu.loginMenu;
             }
         } else {
-
+            MenuViews.mainMenuAllowsCommandError();
         }
     }
 
