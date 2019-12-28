@@ -2,6 +2,7 @@ package control.BattleClasses;
 
 import model.Card;
 import model.Plant;
+import model.Zombie;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -10,7 +11,7 @@ public class Cell {
     protected int x;
     protected int y;
     protected boolean land;
-    protected ArrayList<Card> cards = new ArrayList<>();
+    protected ArrayList<Zombie> zombies = new ArrayList<>();
     protected Plant plant = null;
 
     public Cell(int x, int y, boolean land){
@@ -23,7 +24,7 @@ public class Cell {
         return plant;
     }
 
-    public ArrayList<Card> getCards() {
-        return cards;
+    public ArrayList<Zombie> getZombies() {
+        return zombies;
     }
 }

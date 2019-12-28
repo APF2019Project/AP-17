@@ -33,4 +33,8 @@ public abstract class Card {
     public int getHealth() {
         return health;
     }
+
+    public static ArrayList<Card> getCards() {
+        return cards;
+    }
 }

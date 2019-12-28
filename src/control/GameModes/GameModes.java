@@ -12,29 +12,9 @@ public abstract class GameModes extends Menu {
     protected Map map;
     protected boolean hasEnded = false;
 
-    void generateMap() {
+    public abstract void handleWin();
 
-    }
-
-    ;
-
-    void checkState() {
-
-    }
-
-    ;
-
-    void handleWin() {
-
-    }
-
-    ;
-
-    void getHand() {
-
-    }
-
-    ;
+    public abstract void preProcess();
 
     protected GameModes(Player planter, Player zombiesLeader, Map map) {
         super(ShowGameResultMenu.showGameResultMenu);
