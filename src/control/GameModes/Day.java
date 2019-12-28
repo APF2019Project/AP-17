@@ -2,12 +2,12 @@ package control.GameModes;
 
 import control.BattleClasses.Map;
 import control.Menu;
+import model.Player;
 
 import java.io.IOException;
 import java.util.Scanner;
 
 public class Day extends GameModes{
-    public static Day day = new Day();
 
     @Override
     public void handleCommand(String command, Scanner scanner) throws IOException {
@@ -39,4 +39,7 @@ public class Day extends GameModes{
         return false;
     }
 
+    public Day(Player planter, Player zombieLeader, Map map){
+        super(planter, zombieLeader, map);
+    }
 }

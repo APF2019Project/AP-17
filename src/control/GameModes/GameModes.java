@@ -36,9 +36,9 @@ public abstract class GameModes extends Menu {
 
     ;
 
-    public GameModes(Player plnter, Player zombiesLeader, Map map) {
+    protected GameModes(Player planter, Player zombiesLeader, Map map) {
         super(ShowGameResultMenu.showGameResultMenu);
-        this.planter = plnter;
+        this.planter = planter;
         this.zombiesLeader = zombiesLeader;
         this.map = map;
     }
