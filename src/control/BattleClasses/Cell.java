@@ -11,5 +11,11 @@ public class Cell {
     protected int y;
     protected boolean land;
     protected ArrayList<Card> cards = new ArrayList<>();
-    protected Plant plant;
+    protected Plant plant = null;
+
+    public Cell(int x, int y, boolean land){
+        this.x = x;
+        this.y = y;
+        this.land = land;
+    }
 }

@@ -6,11 +6,11 @@ import control.ShowGameResultMenu;
 import model.Player;
 
 public abstract class GameModes extends Menu {
-    private Player planter;
-    private Player zombiesLeader;
-    private int turn = 0;
-    private Map map;
-    private boolean hasEnded = false;
+    protected Player planter;
+    protected Player zombiesLeader;
+    protected int turn = 0;
+    protected Map map;
+    protected boolean hasEnded = false;
 
     void generateMap() {
 

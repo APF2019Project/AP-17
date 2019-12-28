@@ -7,7 +7,7 @@ import model.Player;
 import java.io.IOException;
 import java.util.Scanner;
 
-public class Day extends GameModes{
+public final class Day extends GameModes{
 
     @Override
     public void handleCommand(String command, Scanner scanner) throws IOException {
@@ -16,7 +16,8 @@ public class Day extends GameModes{
 
     @Override
     public void generateMap() {
-
+        Map map = new Map("day");
+        this.map = map;
     }
 
     @Override
