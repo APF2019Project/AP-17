@@ -11,7 +11,11 @@ public final class Day extends GameModes{
 
     @Override
     public void handleCommand(String command, Scanner scanner) throws IOException {
+        if (allowsCommand(command)){
+            if (command.equals("show lawn")){
 
+            }
+        }
     }
 
     @Override

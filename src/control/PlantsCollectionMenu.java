@@ -18,9 +18,6 @@ public class PlantsCollectionMenu extends Menu {
     public void handleCommand(String command, Scanner scanner) throws IOException {
         if (allowsCommand(command)){
             if (command.equals("play")) {
-                Player planter = new DayAndWaterPlayer(this.account, 2);
-                Player zombieLeader = new ZombieLeaderPlayer(account);
-                menu.
                 currentMenu = menu;
             } else if (command.equals("show hand")) {
                 Hand hand = currentMenu.account.getPlayer().getHand();

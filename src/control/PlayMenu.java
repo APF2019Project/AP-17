@@ -1,6 +1,10 @@
 package control;
 
+import control.BattleClasses.Map;
 import control.GameModes.Day;
+import model.AI;
+import model.DayAndWaterPlayer;
+import model.Player;
 
 import java.io.IOException;
 import java.util.Scanner;
@@ -11,7 +15,11 @@ public class PlayMenu extends Menu {
     public void handleCommand(String command, Scanner scanner) throws IOException {
         if (command.equals("day")){
             currentMenu = PlantsCollectionMenu.plantsCollectionMenu;
-            PlantsCollectionMenu.plantsCollectionMenu.menu = Day.day;
+            DayAndWaterPlayer dayAndWaterPlayer = new DayAndWaterPlayer(this.account, 2);
+            this.account.setPlayer(dayAndWaterPlayer);
+            AI ai = new AI(null);
+            PlantsCollectionMenu.plantsCollectionMenu.menu = new Day(dayAndWaterPlayer
+            , ai, new Map("day"));
             currentMenu.account = currentMenu.parentMenu.account;
             currentMenu.account.createDayAndWaterPlayer();
         }

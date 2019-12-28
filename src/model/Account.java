@@ -157,4 +157,8 @@ public class Account implements Serializable {
     private static void sortAccountsByZombiesKilled(){
         accounts.sort(Comparator.comparing(Account::getZombiesKilled));
     }
+
+    public void setPlayer(Player player){
+        this.player = player;
+    }
 }
