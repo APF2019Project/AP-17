@@ -18,4 +18,12 @@ public class Cell {
         this.y = y;
         this.land = land;
     }
+
+    public Plant getPlant() {
+        return plant;
+    }
+
+    public ArrayList<Card> getCards() {
+        return cards;
+    }
 }
