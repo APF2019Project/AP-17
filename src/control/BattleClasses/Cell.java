@@ -27,4 +27,12 @@ public class Cell {
     public ArrayList<Zombie> getZombies() {
         return zombies;
     }
+
+    public int getX() {
+        return x;
+    }
+
+    public int getY() {
+        return y;
+    }
 }
