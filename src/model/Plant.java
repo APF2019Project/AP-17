@@ -1,5 +1,6 @@
 package model;
 
+import control.Action.Action;
 import control.BattleClasses.Cell;
 
 import java.util.ArrayList;
@@ -9,13 +10,21 @@ public class Plant extends Card{
     private final int sunsNeeded;
     private final int cool_down;
     private final int shotDelay;
+    private final int shotsPerTurn;
     private int lastShot = 0;
     private boolean isAvailable;
-    public Plant(String name, int health, int cooldown, int sunsNeeded, int shotDelay){
+    protected boolean airShooter;
+    private final Action specialTalent;
+    private final Projectile projectile;
+    public Plant(String name, int health, int cooldown, int sunsNeeded, int shotDelay,
+                 int shotsPerTurn, Action specialTalent, Projectile projectile){
         super(name, health, sunsNeeded * cooldown * health + 1);
         this.cool_down = cooldown;
         this.sunsNeeded = sunsNeeded;
         this.shotDelay = shotDelay;
+        this.shotsPerTurn = shotsPerTurn;
+        this.specialTalent = specialTalent;
+        this.projectile = projectile;
     }
 
     @Override
@@ -23,7 +32,8 @@ public class Plant extends Card{
         try {
             return super.clone();
         } catch (CloneNotSupportedException e){
-            return  new Plant(this.getName(), this.getHealth(), this.getCool_down(), this.sunsNeeded, this.shotDelay);
+            return  new Plant(this.getName(), this.getHealth(), this.getCool_down(), this.sunsNeeded, this.shotDelay,
+                    this.shotsPerTurn, this.specialTalent, this.projectile);
         }
     }
 
@@ -32,17 +42,16 @@ public class Plant extends Card{
         return cool_down;
     }
 
-    @Override
-    public int getPrice() {
-        return super.getPrice();
+
+    public boolean isAirShooter() {
+        return airShooter;
     }
 
-    @Override
-    public String getName() {
-        return super.getName();
+    public Projectile getProjectile() {
+        return projectile;
     }
 
-    private final boolean hasCardInFront(){
+    public final boolean hasZombieInFront(){
         int x = location.getX();
         Cell[][] row = map.getCells()[x];
         int y = location.getY();
@@ -60,4 +69,5 @@ public class Plant extends Card{
         }
         return false;
     }
+
 }

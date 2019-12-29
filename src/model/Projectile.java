@@ -7,11 +7,15 @@ import java.util.ArrayList;
 
 public class Projectile {
     private Cell[] location;
-    private final int DAMAGE = 1;
+    private final int damage;
     private final boolean air;
-    Projectile(boolean air, int x, int y, boolean land, Map map){
+    private final int speedDecreasePercent;
+    Projectile(int damage, int speedProducePercent, boolean air, int x, int y, Map map){
+        this.damage = damage;
         location = map.getCells()[x][y];
         this.air = air;
+        this.speedDecreasePercent = speedProducePercent;
+
     }
     public static void moveAllProjcetiles(ArrayList<Projectile> projectiles, Map map){
         for (Projectile projectile :
@@ -24,5 +28,8 @@ public class Projectile {
             Cell[] newCell = map.getCells()[projectile.location[0].getX()][projectile.location[0].getY() + 1];
             projectile.location = newCell;
         }
+    }
+    public Projectile clone(int x, int y, Map map){
+            return new Projectile(this.damage, this.speedDecreasePercent, this.air, x, y, map);
     }
 }

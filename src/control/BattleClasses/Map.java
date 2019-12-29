@@ -1,5 +1,7 @@
 package control.BattleClasses;
 
+import model.Projectile;
+
 import java.util.ArrayList;
 
 public class Map {
@@ -7,6 +9,7 @@ public class Map {
     private static final int HEIGHT = 6;
     private static final int WIDTH = 19;
     private Cell[][][] cells = new Cell[HEIGHT][WIDTH][2];
+    private ArrayList<Projectile> projectiles = new ArrayList<>();
 
     public Map(String type){
         if (type.equals("day")){
@@ -27,5 +30,9 @@ public class Map {
     }
     public static int getWidth(){
         return WIDTH;
+    }
+
+    public ArrayList<Projectile> getProjectiles() {
+        return projectiles;
     }
 }

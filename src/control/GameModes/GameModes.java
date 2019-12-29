@@ -4,6 +4,9 @@ import control.BattleClasses.Map;
 import control.Menu;
 import control.ShowGameResultMenu;
 import model.PlayerTypes.Player;
+import model.Projectile;
+
+import java.util.ArrayList;
 
 public abstract class GameModes extends Menu {
     protected Player planter;

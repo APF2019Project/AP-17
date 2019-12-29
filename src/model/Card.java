@@ -15,7 +15,6 @@ public abstract class Card {
     protected int health;
     protected Map map;
     protected boolean water;
-    protected boolean airShooter;
 
     public Card(String name, int maxHealth, int price) {
         this.name = name;
@@ -42,4 +41,11 @@ public abstract class Card {
         return cards;
     }
 
+    public Cell getLocation() {
+        return location;
+    }
+
+    public Map getMap() {
+        return map;
+    }
 }
