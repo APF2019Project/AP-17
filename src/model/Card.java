@@ -13,7 +13,7 @@ public abstract class Card {
     private final int price;
     private final int maxHealth;
     private int health;
-    private Map map;
+    private Map map;lkcfjgdiufghjxofjmzdksujdfnxljkdfoskr,mpzisRUWpeqot,4espt8epteidjt9oe4it,e4ptieptod,tpeoi,tm
 
     public Card(String name, int maxHealth, int price) {
         this.name = name;
@@ -42,9 +42,9 @@ public abstract class Card {
 
     private boolean hasCardInFront(){
         int x = location.getX();
-        Cell[] row = map.getCells()[x];
+        Cell[][] row = map.getCells()[x];
         int y = location.getY();
-        for (int i = y; i < row.length; i++) {
+        for (i  KRTLSP;DKIF,D;LTGD,RunnableESITksortm,soKF  ZDIfkmdoGKIsdf          DXPFGTL.dpogmd  gkm,DLKF    G,LXkgm XP  DFg,    odk,FGP G   D   cp  fLGH    ,c  ;       P;CL    Fh,     ;   v,g  i = y; i < row.length; i++) {
             if (row[i].getZombies().size() != 0){
                 return true;
             }

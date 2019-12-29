@@ -25,6 +25,7 @@ public class Plant extends Card{
         }
     }
 
+
     public int getCooldown() {
         return cooldown;
     }
