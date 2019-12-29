@@ -1,4 +1,6 @@
-package model;
+package model.PlayerTypes;
+
+import model.Account;
 
 public class DayAndWaterPlayer extends Player {
     private int suns;

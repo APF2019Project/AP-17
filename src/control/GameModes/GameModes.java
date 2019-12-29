@@ -3,7 +3,7 @@ package control.GameModes;
 import control.BattleClasses.Map;
 import control.Menu;
 import control.ShowGameResultMenu;
-import model.Player;
+import model.PlayerTypes.Player;
 
 public abstract class GameModes extends Menu {
     protected Player planter;
@@ -15,6 +15,13 @@ public abstract class GameModes extends Menu {
     public abstract void handleWin();
 
     public abstract void preProcess();
+
+    private Player whoseTurn(){
+        if (turn % 2 == 0){
+            return planter;
+        }
+        return zombiesLeader;
+    }
 
     protected GameModes(Player planter, Player zombiesLeader, Map map) {
         super(ShowGameResultMenu.showGameResultMenu);

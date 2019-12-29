@@ -3,8 +3,7 @@ package control;
 import control.BattleClasses.Map;
 import control.GameModes.Day;
 import model.AI;
-import model.DayAndWaterPlayer;
-import model.Player;
+import model.PlayerTypes.DayAndWaterPlayer;
 
 import java.io.IOException;
 import java.util.Scanner;

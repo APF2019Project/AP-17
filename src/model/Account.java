@@ -1,6 +1,8 @@
 package model;
 
 import com.gilecode.yagson.YaGson;
+import model.PlayerTypes.DayAndWaterPlayer;
+import model.PlayerTypes.Player;
 import view.AccountViews;
 
 import java.io.*;

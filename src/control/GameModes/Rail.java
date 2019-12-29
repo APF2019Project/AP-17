@@ -1,8 +1,7 @@
 package control.GameModes;
 
 import control.BattleClasses.Map;
-import control.Menu;
-import model.Player;
+import model.PlayerTypes.Player;
 
 import java.io.IOException;
 import java.util.Scanner;

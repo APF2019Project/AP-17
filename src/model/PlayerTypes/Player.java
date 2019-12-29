@@ -1,4 +1,7 @@
-package model;
+package model.PlayerTypes;
+
+import model.Account;
+import model.Hand;
 
 public abstract class Player {
     private Account account;

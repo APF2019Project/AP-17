@@ -1,6 +1,8 @@
 package model;
 
-public class AI extends Player{
+import model.PlayerTypes.Player;
+
+public class AI extends Player {
 
 
     public void preProcess(){
