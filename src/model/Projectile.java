@@ -10,11 +10,11 @@ public class Projectile {
     private final int damage;
     private final boolean air;
     private final int speedDecreasePercent;
-    Projectile(int damage, int speedProducePercent, boolean air, int x, int y, Map map){
+    Projectile(int damage, int speedDecreasePercent, boolean air, int x, int y, Map map){
         this.damage = damage;
         location = map.getCells()[x][y];
         this.air = air;
-        this.speedDecreasePercent = speedProducePercent;
+        this.speedDecreasePercent = speedDecreasePercent;
 
     }
     public static void moveAllProjcetiles(ArrayList<Projectile> projectiles, Map map){
