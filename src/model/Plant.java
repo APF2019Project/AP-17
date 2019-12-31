@@ -63,4 +63,10 @@ public class Plant extends Card{
     public Player getPlayer() {
         return player;
     }
+    public void decreaseHealth(int amount){
+        this.health -= amount;
+    }
+    public void defend(Zombie zombie){
+
+    }
 }

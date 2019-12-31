@@ -35,4 +35,7 @@ public class Map {
     public ArrayList<Projectile> getProjectiles() {
         return projectiles;
     }
+    public void checkDies(){
+
+    }
 }
