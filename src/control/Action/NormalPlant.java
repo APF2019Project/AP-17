@@ -17,22 +17,8 @@ public final class NormalPlant extends Action {
 
     @Override
     protected boolean hasZombieInFront() {
-        Cell location = plant.getLocation();
-        int x = location.getX();
-        Map map = plant.getMap();
-        Cell[][] row = map.getCells()[x];
-        int y = location.getY();
-        for (int i = y; i < row.length; i++) {
-            if (!plant.isAirShooter()) {
-                if (row[i][0].getZombies().size() != 0) {
-                    return true;
-                }
-            } else {
-                if (row[i][0].getZombies().size() != 0
-                        || row[i][1].getZombies().size() != 0) {
-                    return true;
-                }
-            }
+        if (hasZombieInOwnRow()){
+            return true;
         }
         return false;
     }
