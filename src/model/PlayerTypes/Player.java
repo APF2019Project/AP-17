@@ -15,4 +15,11 @@ public abstract class Player {
         this.account = account;
         hand = new Hand();
     }
+
+    public void inceraseSuns(int amount){
+        suns += amount;
+    }
+    public void decreaseSuns(int amount){
+        suns -= amount;
+    }
 }

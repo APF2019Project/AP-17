@@ -2,11 +2,12 @@ package model;
 
 import control.Action.Action;
 import control.BattleClasses.Cell;
+import model.PlayerTypes.Player;
 
 import java.util.ArrayList;
 
 public class Plant extends Card{
-    private static ArrayList<Plant> plants = new ArrayList<>();
+    private Player player;
     private final int sunsNeeded;
     private final int cool_down;
     private final int shotDelay;
@@ -17,9 +18,10 @@ public class Plant extends Card{
     protected boolean airShooter;
     private final Action specialTalent;
     private final Projectile projectile;
-    public Plant(String name, int health, int cooldown, int sunsNeeded, int shotDelay,
+    public Plant(Player player,String name, int health, int cooldown, int sunsNeeded, int shotDelay,
                  int shotsPerTurn, int defendValue, int lastShot, Action specialTalent, Projectile projectile){
         super(name, health, sunsNeeded * cooldown * health + 1);
+        this.player = player;
         this.cool_down = cooldown;
         this.sunsNeeded = sunsNeeded;
         this.shotDelay = shotDelay;
@@ -35,7 +37,7 @@ public class Plant extends Card{
         try {
             return super.clone();
         } catch (CloneNotSupportedException e){
-            return  new Plant(this.getName(), this.getHealth(), this.getCool_down(), this.sunsNeeded, this.shotDelay,
+            return  new Plant(this.player, this.getName(), this.getHealth(), this.getCool_down(), this.sunsNeeded, this.shotDelay,
                     this.shotsPerTurn, this.defendValue, this.lastShot, this.specialTalent, this.projectile);
         }
     }
@@ -54,4 +56,11 @@ public class Plant extends Card{
         return projectile;
     }
 
+    public int getShotsPerTurn(){
+        return shotsPerTurn;
+    }
+
+    public Player getPlayer() {
+        return player;
+    }
 }
