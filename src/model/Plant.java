@@ -51,23 +51,4 @@ public class Plant extends Card{
         return projectile;
     }
 
-    public final boolean hasZombieInFront(){
-        int x = location.getX();
-        Cell[][] row = map.getCells()[x];
-        int y = location.getY();
-        for (int i = y; i < row.length; i++) {
-            if (!airShooter){
-                if (row[i][0].getZombies().size() != 0){
-                    return true;
-                }
-            } else {
-                if (row[i][0].getZombies().size() != 0
-                        || row[i][1].getZombies().size() != 0){
-                    return true;
-                }
-            }
-        }
-        return false;
-    }
-
 }
