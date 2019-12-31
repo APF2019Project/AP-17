@@ -9,7 +9,7 @@ import view.BattleViews;
 public abstract class Action {
     protected Plant plant;
 
-    protected abstract void shoot();
+    public abstract void shoot();
 
     protected abstract boolean hasZombieInFront();
 

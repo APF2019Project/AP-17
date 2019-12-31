@@ -1,12 +1,13 @@
 package control.GameModes;
 
-import control.Accessories.Car;
 import control.BattleClasses.Cell;
 import control.BattleClasses.Map;
-import model.Card;
+import control.Shop;
 import model.Hand;
 import model.Plant;
 import model.PlayerTypes.Player;
+import model.Projectile;
+import model.Zombie;
 import view.BattleViews;
 import view.PlayerViews;
 
@@ -14,13 +15,13 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public final class Day extends GameModes {
+public final class Day extends GameMode {
     private static final int WAVE_NUMBERS = 3;
     private int wavesCame = 0;
     private int ranodmNumberToIncreaseSuns;
     private int increaseSunNumbers;
     private int nextWave = 3;
-    private int randomZombieNumbersForEachWave;
+    private int randomZombiesNumberForEachWave;
     public Plant selectedPlant;
 
     @Override
@@ -29,25 +30,37 @@ public final class Day extends GameModes {
             if (command.equals("show lawn")) {
                 BattleViews.showLawn(map);
             }
-        } else if (command.equals("show hand")){
+        } else if (command.equals("show hand")) {
             PlayerViews.showHandForPlants(planter);
-        } else if (command.matches("select \\d+")){
+        } else if (command.matches("select \\d+")) {
             String[] commandSplit = command.split(" ");
             String name = commandSplit[1];
             selectedPlant = select(name);
-            if (selectedPlant == null){
+            if (selectedPlant == null) {
                 BattleViews.plantDoesntExistsError();
             }
-        } else if (command.matches("plant \\d+, \\d+")){
+        } else if (command.matches("plant \\d+, \\d+")) {
             String[] commandSplit = command.split(" ");
             int row = Integer.parseInt(commandSplit[1].substring(0, commandSplit.length - 1));
             int column = Integer.parseInt(commandSplit[2]);
             selectedPlant.getSpecialTalent().plant(row, column, map, this);
-        } else if (command.matches("remove \\d+, \\d+")){
+        } else if (command.matches("remove \\d+, \\d+")) {
             String[] commandSplit = command.split(" ");
             int row = Integer.parseInt(commandSplit[1].substring(0, commandSplit.length - 1));
             int column = Integer.parseInt(commandSplit[2]);
             remove(row, column);
+        } else if (command.equals("end turn")) {
+            if (turn == nextWave) {
+                makeWave();
+            }
+            map.shootPlants();
+            while (!map.areAllZombiesMovedInTurn() || !map.areAllProjectilesMovedInTurn()) {
+                map.doActionZombies(this);
+                Projectile.moveAllProjcetiles(map);
+            }
+            if (map.areAllZombiesDead()){
+                nextWave = turn + 7;
+            }
         }
     }
 
@@ -60,10 +73,9 @@ public final class Day extends GameModes {
     @Override
     public void preProcess() {
         setRandomNumbers();
-        randomZombieNumbersForEachWave = ((int) Math.random()) % 7 + 4;
     }
 
-    private void setRandomNumbers(){
+    private void setRandomNumbers() {
         increaseSunNumbers = ((int) Math.random()) % 4 + 2;
         ranodmNumberToIncreaseSuns = ((int) Math.random()) % 2;
     }
@@ -79,23 +91,39 @@ public final class Day extends GameModes {
         preProcess();
     }
 
-    private void selectWave(){
-
-    }
-
-    private Plant select(String name){
+    private Plant select(String name) {
         Hand hand = planter.getHand();
         Plant plant = (Plant) hand.getCardByName(name);
         return (Plant) plant.clone();
     }
-    private void remove(int row, int column){
+
+    private void remove(int row, int column) {
         Cell cell = map.getCells()[row][column][0];
-        if (cell.getPlant() == null){
+        if (cell.getPlant() == null) {
             BattleViews.cellIsEmpptyError();
             return;
         }
         cell.setPlant(null);
     }
 
+
+    private void makeWave() {
+        randomZombiesNumberForEachWave = ((int) Math.random()) % 7 + 4;
+        ArrayList<Zombie> zombies = Shop.getZombies();
+        ArrayList<Zombie> waveZombies = new ArrayList<>();
+        for (int i = 0; i < randomZombiesNumberForEachWave; i++) {
+            while (true) {
+                int randomNumber = ((int) Math.random()) % zombies.size();
+                if (!zombies.get(randomNumber).isWater()) {
+                    waveZombies.add(zombies.get(randomNumber).clone());
+                    break;
+                }
+            }
+        }
+        for (int i = 0; i < waveZombies.size(); i++) {
+            int randomNumberForSelectingRow = ((int) Math.random()) % Map.getHeight();
+            waveZombies.get(i).getAccessory().put(map, randomNumberForSelectingRow, Map.getWidth() - 1);
+        }
+    }
 
 }

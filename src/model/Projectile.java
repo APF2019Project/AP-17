@@ -10,6 +10,7 @@ public class Projectile {
     protected final int damage;
     protected final boolean air;
     protected final int speedDecreasePercent;
+    protected int moves = 0;
     Projectile(int damage, int speedDecreasePercent, boolean air, int x, int y, Map map){
         this.damage = damage;
         location = map.getCells()[x][y];
@@ -17,22 +18,46 @@ public class Projectile {
         this.speedDecreasePercent = speedDecreasePercent;
 
     }
-    public static void moveAllProjcetiles( Map map){
-        ArrayList<Projectile> projectiles = map.getProjectiles();
-        for (Projectile projectile :
-                projectiles) {
-            projectile.move(map);
+    public void doAction(Map map){
+        if (air){
+            if (this.location[1].getZombies().size() != 0){
+                attack(this.location[1]);
+                location[0].getProjectiles().remove(this);
+                return;
+            }
         }
+        if (this.location[0].getZombies().size() != 0){
+            attack(this.location[0]);
+            location[0].getProjectiles().remove(this);
+            return;
+        }
+        move(map);
     }
     protected void move(Map map){
-        ArrayList<Projectile> projectiles = map.getProjectiles();
-        if (this.location[0].getY() == Map.getWidth() - 1){
-            projectiles.remove(this);
-            this.location = null;
-        } else {
-            Cell[] newCell = map.getCells()[this.location[0].getX()][this.location[0].getY() + 1];
-            this.location = newCell;
+        if (moves < 3) {
+            if (this.location[0].getY() == Map.getWidth() - 1) {
+                this.location[0].getProjectiles().remove(this);
+                this.location = null;
+            } else {
+                Cell[] newCell = map.getCells()[this.location[0].getX()][this.location[0].getY() + 1];
+                moves++;
+                this.location[0].getProjectiles().remove(this);
+                this.location = newCell;
+                this.location[0].getProjectiles().add(this);
+            }
         }
+    }
+
+    public boolean movedInTurn(){
+        if (moves == 3){
+            return true;
+        }
+        return false;
+    }
+    protected void attack(Cell cell){
+        int whichZombie = (int) Math.random() % cell.getZombies().size();
+        Zombie zombie = cell.getZombies().get(whichZombie);
+        zombie.decreaseHealth(damage);
     }
     public Projectile clone(int x, int y, Map map){
             return new Projectile(this.damage, this.speedDecreasePercent, this.air, x, y, map);

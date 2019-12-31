@@ -8,7 +8,7 @@ import model.Projectile;
 
 import java.util.ArrayList;
 
-public abstract class GameModes extends Menu {
+public abstract class GameMode extends Menu {
     protected Player planter;
     protected Player zombiesLeader;
     protected int turn = 0;
@@ -26,10 +26,14 @@ public abstract class GameModes extends Menu {
         return zombiesLeader;
     }
 
-    protected GameModes(Player planter, Player zombiesLeader, Map map) {
+    protected GameMode(Player planter, Player zombiesLeader, Map map) {
         super(ShowGameResultMenu.showGameResultMenu);
         this.planter = planter;
         this.zombiesLeader = zombiesLeader;
         this.map = map;
+    }
+
+    public void hasEnded(){
+        hasEnded = true;
     }
 }

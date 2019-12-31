@@ -93,9 +93,6 @@ public class Account implements Serializable {
         else return false;
     }
 
-    public  void createDayAndWaterPlayer(){
-        player = new DayAndWaterPlayer(this, 2);
-    }
 
     public Player getPlayer() {
         return player;

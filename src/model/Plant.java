@@ -14,7 +14,7 @@ public class Plant extends Card{
     private final int shotsPerTurn;
     private final int defendValue;
     private int remainedCooldown;
-    private boolean isAvailable;
+    private int lastShot;
     protected boolean airShooter;
     private final Action specialTalent;
     private final Projectile projectile;
@@ -82,5 +82,19 @@ public class Plant extends Card{
 
     public Action getSpecialTalent() {
         return specialTalent;
+    }
+
+    public void decreaseRemainedCooldown(){
+        remainedCooldown--;
+    }
+
+    public int getLastShot() {
+        return lastShot;
+    }
+    public void decreaseLastShot(){
+        lastShot--;
+    }
+    public void resetLastShot(){
+        lastShot = shotDelay;
     }
 }

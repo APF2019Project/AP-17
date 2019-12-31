@@ -6,7 +6,7 @@ import model.PlayerTypes.Player;
 import java.io.IOException;
 import java.util.Scanner;
 
-public class Water extends GameModes {
+public class Water extends GameMode {
 
 
     @Override

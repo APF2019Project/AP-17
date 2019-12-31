@@ -1,6 +1,7 @@
 package control;
 
 import control.GameModes.Day;
+import control.GameModes.GameMode;
 import model.*;
 import view.CardView;
 import view.HandViews;
@@ -12,14 +13,13 @@ import java.util.Scanner;
 
 public class PlantsCollectionMenu extends Menu {
     public static PlantsCollectionMenu plantsCollectionMenu = new PlantsCollectionMenu();
-    public Menu menu;
+    public GameMode gameMode;
 
     @Override
     public void handleCommand(String command, Scanner scanner) throws IOException {
         if (allowsCommand(command)){
             if (command.equals("play")) {
-                Day.
-                currentMenu = menu;
+                currentMenu = gameMode;
             } else if (command.equals("show hand")) {
                 Hand hand = currentMenu.account.getPlayer().getHand();
                 ArrayList<Card> cards = hand.getCards();

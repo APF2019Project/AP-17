@@ -6,7 +6,7 @@ import model.PlayerTypes.Player;
 import java.io.IOException;
 import java.util.Scanner;
 
-public class Rail extends GameModes {
+public class Rail extends GameMode {
 
 
     @Override

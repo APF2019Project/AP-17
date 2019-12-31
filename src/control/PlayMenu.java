@@ -17,10 +17,10 @@ public class PlayMenu extends Menu {
             DayAndWaterPlayer dayAndWaterPlayer = new DayAndWaterPlayer(this.account, 2);
             this.account.setPlayer(dayAndWaterPlayer);
             AI ai = new AI(null);
-            PlantsCollectionMenu.plantsCollectionMenu.menu = new Day(dayAndWaterPlayer
+            PlantsCollectionMenu.plantsCollectionMenu.gameMode = new Day(dayAndWaterPlayer
             , ai, new Map("day"));
             currentMenu.account = currentMenu.parentMenu.account;
-            currentMenu.account.createDayAndWaterPlayer();
+            PlantsCollectionMenu.plantsCollectionMenu.gameMode.preProcess();
         }
     }
 

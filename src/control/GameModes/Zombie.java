@@ -6,7 +6,7 @@ import model.PlayerTypes.Player;
 import java.io.IOException;
 import java.util.Scanner;
 
-public class Zombie extends GameModes {
+public class Zombie extends GameMode {
 
 
     @Override

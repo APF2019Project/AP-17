@@ -2,6 +2,7 @@ package control.BattleClasses;
 
 import model.Card;
 import model.Plant;
+import model.Projectile;
 import model.Zombie;
 
 import java.util.ArrayList;
@@ -13,6 +14,7 @@ public class Cell {
     protected boolean land;
     protected ArrayList<Zombie> zombies = new ArrayList<>();
     protected Plant plant = null;
+    ArrayList<Projectile> projectiles = new ArrayList<>();
 
     public Cell(int x, int y, boolean land){
         this.x = x;
@@ -46,5 +48,9 @@ public class Cell {
 
     public void setPlant(Plant plant) {
         this.plant = plant;
+    }
+
+    public ArrayList<Projectile> getProjectiles() {
+        return projectiles;
     }
 }

@@ -6,7 +6,6 @@ import control.BattleClasses.Cell;
 import java.util.ArrayList;
 
 public class Zombie extends Card {
-    private static ArrayList<Zombie> zombies = new ArrayList<>();
     private int speed;
     private Accessory accessory;
     private Cell location;
@@ -33,5 +32,33 @@ public class Zombie extends Card {
     }
     public void resetMoves(){
         moves = 0;
+    }
+
+    public Zombie clone(){
+        Zombie zombie = new Zombie(this.name, this.health, this .speed, this.damage);
+        zombie.accessory = this.accessory.clone(this);
+        return zombie;
+    }
+
+    public void decreaseHealth(int amount){
+        health -= amount;
+    }
+
+    public boolean movedInTurn(){
+        if (moves == speed){
+            return true;
+        }
+        return false;
+    }
+    public Accessory getAccessory() {
+        return accessory;
+    }
+
+    public void setLocation(Cell location) {
+        this.location = location;
+    }
+
+    public int getSpeed(){
+        return speed;
     }
 }
