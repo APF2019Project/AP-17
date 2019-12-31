@@ -6,7 +6,7 @@ import control.BattleClasses.Map;
 import java.util.ArrayList;
 
 public class Projectile {
-    private Cell[] location;
+    protected Cell[] location;
     private final int damage;
     private final boolean air;
     private final int speedDecreasePercent;
@@ -17,16 +17,21 @@ public class Projectile {
         this.speedDecreasePercent = speedDecreasePercent;
 
     }
-    public static void moveAllProjcetiles(ArrayList<Projectile> projectiles, Map map){
+    public static void moveAllProjcetiles( Map map){
+        ArrayList<Projectile> projectiles = map.getProjectiles();
         for (Projectile projectile :
                 projectiles) {
-            if (projectile.location[0].getY() == Map.getWidth() - 1){
-                projectiles.remove(projectile);
-                projectile.location = null;
-                continue;
-            }
-            Cell[] newCell = map.getCells()[projectile.location[0].getX()][projectile.location[0].getY() + 1];
-            projectile.location = newCell;
+            projectile.move(map);
+        }
+    }
+    protected void move(Map map){
+        ArrayList<Projectile> projectiles = map.getProjectiles();
+        if (this.location[0].getY() == Map.getWidth() - 1){
+            projectiles.remove(this);
+            this.location = null;
+        } else {
+            Cell[] newCell = map.getCells()[this.location[0].getX()][this.location[0].getY() + 1];
+            this.location = newCell;
         }
     }
     public Projectile clone(int x, int y, Map map){
