@@ -7,9 +7,9 @@ import java.util.ArrayList;
 
 public class Projectile {
     protected Cell[] location;
-    private final int damage;
-    private final boolean air;
-    private final int speedDecreasePercent;
+    protected final int damage;
+    protected final boolean air;
+    protected final int speedDecreasePercent;
     Projectile(int damage, int speedDecreasePercent, boolean air, int x, int y, Map map){
         this.damage = damage;
         location = map.getCells()[x][y];

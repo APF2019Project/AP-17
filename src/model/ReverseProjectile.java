@@ -19,4 +19,7 @@ public final class ReverseProjectile extends Projectile{
             this.location = newCell;
         }
     }
+    public ReverseProjectile clone(int x, int y, Map map){
+        return new ReverseProjectile(this.damage, this.speedDecreasePercent, this.air, x, y, map);
+    }
 }
