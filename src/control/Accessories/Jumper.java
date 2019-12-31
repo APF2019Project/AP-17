@@ -2,8 +2,8 @@ package control.Accessories;
 
 import model.Zombie;
 
-public class Baloon extends Accessory {
-    public Baloon(Zombie zombie) {
+public class Jumper extends Accessory {
+    public Jumper(Zombie zombie) {
         super(zombie);
     }
 

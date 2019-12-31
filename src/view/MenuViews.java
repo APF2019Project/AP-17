@@ -60,4 +60,29 @@ public class MenuViews {
         System.out.println("remove [name] --> Remove a card from your hand");
         System.out.println("play --> start the game");
     }
+    public static void plants(){
+        System.out.println("Plants:");
+    }
+    public static void zombies(){
+        System.out.println("Zombies:");
+    }
+    public static void cardDoenstExistsError(){
+        System.out.println("Error: Card doesn't exists!");
+    }
+
+    public static void notEnoughMoneyError(){
+        System.out.println("Error: not enough money!");
+    }
+
+    public static void shopMenuHelp(){
+        System.out.println("show shop --> shows cards that you didn't buy yet!");
+        System.out.println("show collection --> shows your own cards");
+        System.out.println("buy [name] --> buy a new card");
+        System.out.println("money --> shows your money");
+    }
+
+    public static void shopMenuAllowsCommandError(){
+        System.out.println("Shop menu Error: Please enter a valid command!");
+        System.out.println("For more information, enter help");
+    }
 }

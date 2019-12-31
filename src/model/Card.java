@@ -3,24 +3,34 @@ package model;
 import control.Accessories.Car;
 import control.BattleClasses.Cell;
 import control.BattleClasses.Map;
+import model.PlayerTypes.Player;
 
 import java.util.ArrayList;
 
 public abstract class Card {
-    protected static ArrayList<Card> cards = new ArrayList<>();
     protected final String name;
     protected Cell location;
     protected final int price;
     protected final int maxHealth;
     protected int health;
+    protected Player player;
     protected Map map;
-    protected boolean water;
+    protected final boolean water;
 
-    public Card(String name, int maxHealth, int price) {
+    public Card(String name, int maxHealth, int price, boolean water, Player player) {
         this.name = name;
         this.maxHealth = maxHealth;
         this.health = maxHealth;
         this.price = price;
+        this.water = water;
+        this.player = player;
+    }
+    public Card(String name, int maxHealth, int price, boolean water) {
+        this.name = name;
+        this.maxHealth = maxHealth;
+        this.health = maxHealth;
+        this.price = price;
+        this.water = water;
     }
 
 
@@ -35,10 +45,6 @@ public abstract class Card {
 
     public int getHealth() {
         return health;
-    }
-
-    public static ArrayList<Card> getCards() {
-        return cards;
     }
 
     public Cell getLocation() {

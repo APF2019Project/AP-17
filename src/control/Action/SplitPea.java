@@ -10,16 +10,16 @@ public class SplitPea  extends Action{
     private ReverseProjectile reverseProjectile;
 //    private ReverseProjectile reverseProjectile = new ReverseProjectile();
     @Override
-    protected void shoot() {
+    public void shoot() {
         if (hasZombieInFront()){
             Projectile projectile = plant.getProjectile().clone(plant.getLocation().getX(), plant.getLocation().getY()
                     , plant.getMap());
-            plant.getMap().getProjectiles().add(projectile);
+            plant.getLocation().getProjectiles().add(projectile);
         }
         if (hasZombieInBack()){
             ReverseProjectile newReverseProjectile =  reverseProjectile.clone(plant.getLocation().getX(),
                     plant.getLocation().getY(), plant.getMap());
-            plant.getMap().getProjectiles().add(newReverseProjectile);
+            plant.getLocation().getProjectiles().add(newReverseProjectile);
         }
     }
 
@@ -55,5 +55,10 @@ public class SplitPea  extends Action{
 
     public SplitPea(Plant plant){
         super(plant);
+    }
+
+    @Override
+    public Action clone(Plant plant) {
+        return null;
     }
 }

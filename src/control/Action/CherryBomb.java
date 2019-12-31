@@ -7,7 +7,7 @@ public class CherryBomb extends Action{
 
 
     @Override
-    protected void shoot() {
+    public void shoot() {
         if (hasZombieInFront()){
             Cell cell = plant.getLocation();
             cell.getZombies().clear();
@@ -69,6 +69,11 @@ public class CherryBomb extends Action{
     }
     public CherryBomb(Plant plant) {
         super(plant);
+    }
+
+    @Override
+    public Action clone(Plant plant) {
+        return null;
     }
 
 }

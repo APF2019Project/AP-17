@@ -10,4 +10,8 @@ public class Shield extends Accessory {
     }
     private int health;
 
+    @Override
+    public Accessory clone(Zombie zombie) {
+        return null;
+    }
 }

@@ -9,6 +9,11 @@ public class Giant extends Accessory{
     }
 
     @Override
+    public Accessory clone(Zombie zombie) {
+        return null;
+    }
+
+//    @Override
     public void doAction(Map map) {
         if (zombie.getLocation().getPlant() != null){
             zombie.getLocation().killPlant();

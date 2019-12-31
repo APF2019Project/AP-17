@@ -8,7 +8,7 @@ public class Jalapeno extends Action{
 
 
     @Override
-    protected void shoot() {
+    public void shoot() {
      if (hasZombieInFront()){
          Cell[][] row = plant.getMap().getCells()[plant.getLocation().getX()];
          for (int i = 0; i < Map.getWidth(); i++) {
@@ -24,5 +24,10 @@ public class Jalapeno extends Action{
     }
     public Jalapeno(Plant plant) {
         super(plant);
+    }
+
+    @Override
+    public Action clone(Plant plant) {
+        return null;
     }
 }

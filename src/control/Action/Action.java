@@ -4,6 +4,7 @@ import control.BattleClasses.Cell;
 import control.BattleClasses.Map;
 import control.GameModes.Day;
 import model.Plant;
+import model.Zombie;
 import view.BattleViews;
 
 public abstract class Action {
@@ -63,4 +64,6 @@ public abstract class Action {
         }
         return false;
     }
+
+    public abstract Action clone(Plant plant);
 }

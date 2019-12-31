@@ -1,7 +1,11 @@
 import com.gilecode.yagson.YaGson;
 import com.gilecode.yagson.com.google.gson.Gson;
+import control.Accessories.*;
+import control.Action.*;
 import control.LoginMenu;
 import control.Menu;
+import model.Plant;
+import model.Projectile;
 import model.Zombie;
 
 import java.io.FileNotFoundException;
@@ -14,10 +18,6 @@ public class Main {
     public static void main(String[] args) throws IOException {
         Scanner scanner = new Scanner(System.in);
         String command;
-
-//        FileWriter fileWriter = new FileWriter("../model/zombies.json");
-        YaGson yaGson = new YaGson();
-        ArrayList<Zombie> zombies = new ArrayList<>();
         while (true){
             command = scanner.nextLine();
             command = command.toLowerCase();

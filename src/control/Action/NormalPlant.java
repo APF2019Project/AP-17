@@ -7,11 +7,11 @@ import model.Projectile;
 
 public final class NormalPlant extends Action {
     @Override
-    protected void shoot() {
+    public void shoot() {
         if (hasZombieInFront()){
             Projectile projectile = plant.getProjectile().clone(plant.getLocation().getX(), plant.getLocation().getY()
                     , plant.getMap());
-            plant.getMap().getProjectiles().add(projectile);
+            plant.getLocation().getProjectiles().add(projectile);
         }
     }
 
@@ -24,6 +24,11 @@ public final class NormalPlant extends Action {
     }
     public NormalPlant(Plant plant){
         super(plant);
+    }
+
+    @Override
+    public Action clone(Plant plant) {
+        return null;
     }
 
 }

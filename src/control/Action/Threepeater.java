@@ -10,22 +10,27 @@ public final class Threepeater extends Action {
         if (hasZombieInFront()) {
             Projectile projectile = plant.getProjectile().clone(plant.getLocation().getX(), plant.getLocation().getY()
                     , plant.getMap());
-            plant.getMap().getProjectiles().add(projectile);
+            plant.getLocation().getProjectiles().add(projectile);
             if (plant.getLocation().getX() != Map.getHeight() - 1) {
                 projectile = plant.getProjectile().clone(plant.getLocation().getX() + 1, plant.getLocation().getY()
                         , plant.getMap());
-                plant.getMap().getProjectiles().add(projectile);
+                plant.getLocation().getProjectiles().add(projectile);
             }
             if (plant.getLocation().getX() != 0){
                 projectile = plant.getProjectile().clone(plant.getLocation().getX() - 1, plant.getLocation().getY()
                         , plant.getMap());
-                plant.getMap().getProjectiles().add(projectile);
+                plant.getLocation().getProjectiles().add(projectile);
             }
         }
     }
 
     public Threepeater(Plant plant) {
         super(plant);
+    }
+
+    @Override
+    public Action clone(Plant plant) {
+        return null;
     }
 
     protected boolean hasZombieInFront() {

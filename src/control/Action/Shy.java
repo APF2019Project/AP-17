@@ -8,11 +8,11 @@ import model.Projectile;
 public class Shy extends Action{
 
     @Override
-    protected void shoot() {
+    public void shoot() {
         if (hasZombieInFront()){
             Projectile projectile = plant.getProjectile().clone(plant.getLocation().getX(), plant.getLocation().getY()
                     , plant.getMap());
-            plant.getMap().getProjectiles().add(projectile);
+            plant.getLocation().getProjectiles().add(projectile);
         }
 
     }
@@ -35,5 +35,10 @@ public class Shy extends Action{
 
     public Shy(Plant plant){
         super(plant);
+    }
+
+    @Override
+    public Action clone(Plant plant) {
+        return null;
     }
 }

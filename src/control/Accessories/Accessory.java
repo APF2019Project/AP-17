@@ -5,7 +5,7 @@ import control.BattleClasses.Map;
 import control.GameModes.GameMode;
 import model.Zombie;
 
-public abstract class Accessory {
+public class Accessory {
     Zombie zombie;
     boolean attacked = false;
     public void doAction(Map map, GameMode gameMode){
@@ -54,5 +54,7 @@ public abstract class Accessory {
         this.zombie = zombie;
     }
 
-    public abstract Accessory clone(Zombie zombie);
+    public  Accessory clone(Zombie zombie){
+        return null;
+    }
 }

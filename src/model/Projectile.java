@@ -10,12 +10,16 @@ public class Projectile {
     protected final int damage;
     protected final boolean air;
     protected final int speedDecreasePercent;
+    protected final int speedDecreasePercentTurnNumbers;
     protected int moves = 0;
-    Projectile(int damage, int speedDecreasePercent, boolean air, int x, int y, Map map){
+    public Projectile(int damage, int speedDecreasePercent, int speedDecreasePercentTurnNumbers, boolean air, int x, int y, Map map){
         this.damage = damage;
-        location = map.getCells()[x][y];
+        if (map != null) {
+            location = map.getCells()[x][y];
+        }
         this.air = air;
         this.speedDecreasePercent = speedDecreasePercent;
+        this.speedDecreasePercentTurnNumbers = speedDecreasePercentTurnNumbers;
 
     }
     public void doAction(Map map){
@@ -60,6 +64,6 @@ public class Projectile {
         zombie.decreaseHealth(damage);
     }
     public Projectile clone(int x, int y, Map map){
-            return new Projectile(this.damage, this.speedDecreasePercent, this.air, x, y, map);
+            return new Projectile(this.damage, this.speedDecreasePercent, this.speedDecreasePercentTurnNumbers, this.air, x, y, map);
     }
 }

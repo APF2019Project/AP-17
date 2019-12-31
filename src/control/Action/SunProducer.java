@@ -5,7 +5,7 @@ import model.Plant;
 public class SunProducer  extends Action{
 
     @Override
-    protected void shoot() {
+    public void shoot() {
         if (hasZombieInFront()){
             plant.getPlayer().inceraseSuns(plant.getShotsPerTurn());
         }
@@ -17,5 +17,10 @@ public class SunProducer  extends Action{
     }
     public SunProducer(Plant plant) {
         super(plant);
+    }
+
+    @Override
+    public Action clone(Plant plant) {
+        return null;
     }
 }
