@@ -6,6 +6,7 @@ import control.BattleClasses.Cell;
 import java.util.ArrayList;
 
 public class Zombie extends Card {
+    private static ArrayList<Zombie> zombies = new ArrayList<>();
     private int speed;
     private Accessory accessory;
     private Cell location;

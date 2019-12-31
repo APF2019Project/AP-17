@@ -1,7 +1,10 @@
 package model;
 
 import control.Action.Action;
+import control.BattleClasses.Cell;
 import model.PlayerTypes.Player;
+
+import java.util.ArrayList;
 
 public class Plant extends Card{
     private Player player;
