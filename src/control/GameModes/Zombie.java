@@ -18,6 +18,17 @@ public class Zombie extends GameModes {
     public void handleCommand(String command, Scanner scanner) throws IOException {
 
     }
+
+    @Override
+    public void handleWin() {
+
+    }
+
+    @Override
+    public void preProcess() {
+
+    }
+
     public Zombie(Player planter, Player zombieLeader, Map map){
         super(planter, zombieLeader, map);
     }

@@ -7,8 +7,8 @@ import model.Projectile;
 import model.ReverseProjectile;
 
 public class SplitPea  extends Action{
-
-    private ReverseProjectile reverseProjectile = new ReverseProjectile();
+    private ReverseProjectile reverseProjectile;
+//    private ReverseProjectile reverseProjectile = new ReverseProjectile();
     @Override
     protected void shoot() {
         if (hasZombieInFront()){

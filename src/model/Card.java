@@ -48,4 +48,8 @@ public abstract class Card {
     public Map getMap() {
         return map;
     }
+
+    public boolean isWater() {
+        return water;
+    }
 }

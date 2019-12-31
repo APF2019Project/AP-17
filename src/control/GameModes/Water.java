@@ -18,6 +18,17 @@ public class Water extends GameModes {
     public void handleCommand(String command, Scanner scanner) throws IOException {
 
     }
+
+    @Override
+    public void handleWin() {
+        
+    }
+
+    @Override
+    public void preProcess() {
+
+    }
+
     public Water(Player planter, Player zombieLeader, Map map){
         super(planter, zombieLeader, map);
     }

@@ -1,10 +1,17 @@
 package control.GameModes;
 
+import control.Accessories.Car;
+import control.BattleClasses.Cell;
 import control.BattleClasses.Map;
+import model.Card;
+import model.Hand;
+import model.Plant;
 import model.PlayerTypes.Player;
 import view.BattleViews;
+import view.PlayerViews;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public final class Day extends GameModes {
@@ -14,6 +21,7 @@ public final class Day extends GameModes {
     private int increaseSunNumbers;
     private int nextWave = 3;
     private int randomZombieNumbersForEachWave;
+    public Plant selectedPlant;
 
     @Override
     public void handleCommand(String command, Scanner scanner) throws IOException {
@@ -21,6 +29,25 @@ public final class Day extends GameModes {
             if (command.equals("show lawn")) {
                 BattleViews.showLawn(map);
             }
+        } else if (command.equals("show hand")){
+            PlayerViews.showHandForPlants(planter);
+        } else if (command.matches("select \\d+")){
+            String[] commandSplit = command.split(" ");
+            String name = commandSplit[1];
+            selectedPlant = select(name);
+            if (selectedPlant == null){
+                BattleViews.plantDoesntExistsError();
+            }
+        } else if (command.matches("plant \\d+, \\d+")){
+            String[] commandSplit = command.split(" ");
+            int row = Integer.parseInt(commandSplit[1].substring(0, commandSplit.length - 1));
+            int column = Integer.parseInt(commandSplit[2]);
+            selectedPlant.getSpecialTalent().plant(row, column, map, this);
+        } else if (command.matches("remove \\d+, \\d+")){
+            String[] commandSplit = command.split(" ");
+            int row = Integer.parseInt(commandSplit[1].substring(0, commandSplit.length - 1));
+            int column = Integer.parseInt(commandSplit[2]);
+            remove(row, column);
         }
     }
 
@@ -55,4 +82,20 @@ public final class Day extends GameModes {
     private void selectWave(){
 
     }
+
+    private Plant select(String name){
+        Hand hand = planter.getHand();
+        Plant plant = (Plant) hand.getCardByName(name);
+        return (Plant) plant.clone();
+    }
+    private void remove(int row, int column){
+        Cell cell = map.getCells()[row][column][0];
+        if (cell.getPlant() == null){
+            BattleViews.cellIsEmpptyError();
+            return;
+        }
+        cell.setPlant(null);
+    }
+
+
 }

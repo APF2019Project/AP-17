@@ -21,6 +21,10 @@ public class Map {
             }
         }
     }
+    public void checkDies(){
+
+    }
+
 
     public Cell[][][] getCells() {
         return cells;

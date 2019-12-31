@@ -35,4 +35,16 @@ public class Cell {
     public int getY() {
         return y;
     }
+
+    public void killPlant(){
+        plant = null;
+    }
+
+    public boolean isLand() {
+        return land;
+    }
+
+    public void setPlant(Plant plant) {
+        this.plant = plant;
+    }
 }

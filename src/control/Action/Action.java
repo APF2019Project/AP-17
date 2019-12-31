@@ -2,7 +2,9 @@ package control.Action;
 
 import control.BattleClasses.Cell;
 import control.BattleClasses.Map;
+import control.GameModes.Day;
 import model.Plant;
+import view.BattleViews;
 
 public abstract class Action {
     protected Plant plant;
@@ -35,7 +37,26 @@ public abstract class Action {
         }
         return false;
     }
-
+    public void plant(int row, int column, Map map, Day day){
+        if (row > Map.getHeight()){
+            BattleViews.invalidRowNumberError();
+            return;
+        }
+        if (column > Map.getWidth()){
+            BattleViews.invalidColumnNumberError();
+            return;
+        }
+        Cell cell = map.getCells()[row][column][0];
+        if ((!day.selectedPlant.isWater() && !cell.isLand())
+        || day.selectedPlant.isWater() || cell.isLand()){
+            BattleViews.WaterLandError();
+            return;
+        }
+        if (cell.getPlant() != null){
+            BattleViews.cellIsFullError();
+        }
+        cell.setPlant(day.selectedPlant);
+    }
     protected final boolean isZombieInCell(Cell cell) {
         if (cell.getZombies().size() != 0){
             return true;
