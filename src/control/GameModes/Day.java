@@ -36,9 +36,6 @@ public final class Day extends GameMode {
             String[] commandSplit = command.split(" ");
             String name = commandSplit[1];
             selectedPlant = select(name);
-            if (selectedPlant == null) {
-                BattleViews.plantDoesntExistsError();
-            }
         } else if (command.matches("plant \\d+, \\d+")) {
             String[] commandSplit = command.split(" ");
             int row = Integer.parseInt(commandSplit[1].substring(0, commandSplit.length - 1));
@@ -56,7 +53,7 @@ public final class Day extends GameMode {
             map.shootPlants();
             while (!map.areAllZombiesMovedInTurn() || !map.areAllProjectilesMovedInTurn()) {
                 map.doActionZombies(this);
-                Projectile.moveAllProjcetiles(map);
+                map.moveAllProjectiles();
             }
             if (map.areAllZombiesDead()){
                 nextWave = turn + 7;
@@ -94,6 +91,18 @@ public final class Day extends GameMode {
     private Plant select(String name) {
         Hand hand = planter.getHand();
         Plant plant = (Plant) hand.getCardByName(name);
+        if (plant == null) {
+            BattleViews.plantDoesntExistsError();
+            return null;
+        }
+        if (plant.getSunsNeeded() > planter.getSuns()){
+            BattleViews.notEnoughSunsError();
+            return null;
+        }
+        if (plant.getRemainedCooldown() != 0){
+            BattleViews.cooldownRemainedError();
+            return null;
+        }
         return (Plant) plant.clone();
     }
 
@@ -105,7 +114,6 @@ public final class Day extends GameMode {
         }
         cell.setPlant(null);
     }
-
 
     private void makeWave() {
         randomZombiesNumberForEachWave = ((int) Math.random()) % 7 + 4;

@@ -15,6 +15,9 @@ public abstract class Player {
         this.account = account;
         hand = new Hand();
     }
+    public int getSuns(){
+        return suns;
+    }
 
     public void inceraseSuns(int amount){
         suns += amount;

@@ -55,7 +55,7 @@ public abstract class Action {
         if (cell.getPlant() != null){
             BattleViews.cellIsFullError();
         }
-        cell.setPlant(day.selectedPlant);
+        cell.setPlant((Plant) day.selectedPlant.clone());
     }
     protected final boolean isZombieInCell(Cell cell) {
         if (cell.getZombies().size() != 0){

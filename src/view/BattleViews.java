@@ -66,4 +66,12 @@ public class BattleViews {
     public static void cellIsEmpptyError(){
         System.out.println("Error: cell is empty");
     }
+
+    public static void notEnoughSunsError(){
+        System.out.println("Error: not enough suns!");
+    }
+
+    public static void cooldownRemainedError(){
+        System.out.println("Error: cooldown Remained");
+    }
 }
